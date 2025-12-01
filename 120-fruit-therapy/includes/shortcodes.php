@@ -49,7 +49,7 @@ function ftp_header_shortcode() {
         <div class="ftp-header-container">
             <div class="ftp-logo">
                 <a href="#ftp-hero">
-                    <img src="<?php echo esc_url(FTP_PLUGIN_URL . '../Navy and Pink Modern Online Store Logo.webp'); ?>" alt="120 Fruit Therapy Place" class="ftp-logo-img">
+                    <img src="<?php echo esc_url(ftp_get_logo_url()); ?>" alt="120 Fruit Therapy Place" class="ftp-logo-img">
                     <span class="ftp-logo-text">120 Fruit Therapy Place</span>
                 </a>
             </div>
@@ -82,7 +82,7 @@ function ftp_hero_shortcode() {
     <section class="ftp-hero" id="ftp-hero">
         <div class="ftp-hero-video-container">
             <video class="ftp-hero-video" autoplay muted loop playsinline>
-                <source src="<?php echo esc_url(FTP_PLUGIN_URL . '../motion2Fast_Realistic_video_a_rich_parfait_spilling_from_a_cur_0.mp4'); ?>" type="video/mp4">
+                <source src="<?php echo esc_url(ftp_get_hero_video_url()); ?>" type="video/mp4">
             </video>
             <div class="ftp-hero-overlay"></div>
         </div>
@@ -455,7 +455,7 @@ function ftp_footer_shortcode() {
         <div class="ftp-container">
             <div class="ftp-footer-grid">
                 <div class="ftp-footer-brand">
-                    <img src="<?php echo esc_url(FTP_PLUGIN_URL . '../Navy and Pink Modern Online Store Logo.webp'); ?>" alt="120 Fruit Therapy Place" class="ftp-footer-logo">
+                    <img src="<?php echo esc_url(ftp_get_logo_url()); ?>" alt="120 Fruit Therapy Place" class="ftp-footer-logo">
                     <p class="ftp-footer-tagline">Health &amp; Wellness Through Fresh Fruits</p>
                 </div>
                 <div class="ftp-footer-links">

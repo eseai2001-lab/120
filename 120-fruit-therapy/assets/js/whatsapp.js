@@ -10,11 +10,11 @@
     var supportPhone = '2349042146929';
 
     // Check if ftpData is available from WordPress
-    if (typeof ftpData !== 'undefined') {
-        if (ftpData.orderPhone) {
+    if (typeof ftpData !== 'undefined' && ftpData !== null) {
+        if (ftpData.orderPhone && typeof ftpData.orderPhone === 'string') {
             orderPhone = '234' + ftpData.orderPhone.replace(/^0/, '');
         }
-        if (ftpData.supportPhone) {
+        if (ftpData.supportPhone && typeof ftpData.supportPhone === 'string') {
             supportPhone = '234' + ftpData.supportPhone.replace(/^0/, '');
         }
     }

@@ -66,6 +66,46 @@
     }
 
     /**
+     * Smooth scroll polyfill for older browsers
+     * @param {number} targetPosition - Target scroll position
+     * @param {number} duration - Animation duration in ms
+     */
+    function smoothScrollTo(targetPosition, duration) {
+        // Check if native smooth scroll is supported
+        if ('scrollBehavior' in document.documentElement.style) {
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+            return;
+        }
+        
+        // Fallback for older browsers
+        var startPosition = window.pageYOffset;
+        var distance = targetPosition - startPosition;
+        var startTime = null;
+        
+        function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            var timeElapsed = currentTime - startTime;
+            var progress = Math.min(timeElapsed / duration, 1);
+            
+            // Easing function (ease-in-out)
+            var ease = progress < 0.5 
+                ? 2 * progress * progress 
+                : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+            
+            window.scrollTo(0, startPosition + distance * ease);
+            
+            if (timeElapsed < duration) {
+                requestAnimationFrame(animation);
+            }
+        }
+        
+        requestAnimationFrame(animation);
+    }
+
+    /**
      * Initialize smooth scrolling for anchor links
      */
     function initSmoothScroll() {
@@ -82,10 +122,7 @@
                 var headerHeight = header ? header.offsetHeight : 0;
                 var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
                 
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                smoothScrollTo(targetPosition, 800);
             });
         });
     }
