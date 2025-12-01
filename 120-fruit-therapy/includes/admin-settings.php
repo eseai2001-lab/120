@@ -50,8 +50,16 @@ function ftp_sanitize_settings($input) {
         $sanitized['menu_page_url'] = esc_url_raw($input['menu_page_url']);
     }
     
+    if (isset($input['special_plans_page_url'])) {
+        $sanitized['special_plans_page_url'] = esc_url_raw($input['special_plans_page_url']);
+    }
+    
     if (isset($input['category_images']) && is_array($input['category_images'])) {
         $sanitized['category_images'] = array_map('esc_url_raw', $input['category_images']);
+    }
+    
+    if (isset($input['plan_images']) && is_array($input['plan_images'])) {
+        $sanitized['plan_images'] = array_map('esc_url_raw', $input['plan_images']);
     }
     
     return $sanitized;
@@ -141,7 +149,21 @@ function ftp_settings_page() {
                                    name="ftp_settings[menu_page_url]" 
                                    value="<?php echo esc_attr($settings['menu_page_url'] ?? ''); ?>" 
                                    class="regular-text">
-                            <p class="description">Enter the URL of the page containing the [ftp_menu_full] shortcode. Used by the floating support button.</p>
+                            <p class="description">Enter the URL of the page containing the [ftp_menu_full] shortcode. Used by the floating support button and menu links.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">
+                            <label for="ftp_special_plans_page_url">Special Plans Page URL</label>
+                        </th>
+                        <td>
+                            <input type="text" 
+                                   id="ftp_special_plans_page_url" 
+                                   name="ftp_settings[special_plans_page_url]" 
+                                   value="<?php echo esc_attr($settings['special_plans_page_url'] ?? ''); ?>" 
+                                   class="regular-text">
+                            <p class="description">Enter the URL of the page containing the [ftp_special_plans_full] shortcode.</p>
                         </td>
                     </tr>
                 </table>
@@ -172,6 +194,44 @@ function ftp_settings_page() {
                                 <?php if (isset($settings['category_images'][$key]) && !empty($settings['category_images'][$key])) : ?>
                                 <div class="ftp-image-preview">
                                     <img src="<?php echo esc_url($settings['category_images'][$key]); ?>" alt="<?php echo esc_attr($category['title']); ?>">
+                                </div>
+                                <?php endif; ?>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+            
+            <div class="ftp-settings-section">
+                <h2>Special Plans Images</h2>
+                <p class="description">Upload images for each wellness plan. These will appear as card backgrounds on the landing page.</p>
+                
+                <table class="form-table">
+                    <?php 
+                    $plans = ftp_get_special_plans();
+                    foreach ($plans as $plan) : 
+                        $plan_key = sanitize_title($plan['name']);
+                    ?>
+                    <tr>
+                        <th scope="row">
+                            <label for="ftp_plan_<?php echo esc_attr($plan_key); ?>">
+                                <?php echo esc_html($plan['name']); ?>
+                            </label>
+                        </th>
+                        <td>
+                            <div class="ftp-media-field">
+                                <input type="text" 
+                                       id="ftp_plan_<?php echo esc_attr($plan_key); ?>" 
+                                       name="ftp_settings[plan_images][<?php echo esc_attr($plan_key); ?>]" 
+                                       value="<?php echo esc_attr(isset($settings['plan_images'][$plan_key]) ? $settings['plan_images'][$plan_key] : ''); ?>" 
+                                       class="regular-text ftp-media-url">
+                                <button type="button" class="button ftp-media-upload" data-target="ftp_plan_<?php echo esc_attr($plan_key); ?>">
+                                    Upload
+                                </button>
+                                <?php if (isset($settings['plan_images'][$plan_key]) && !empty($settings['plan_images'][$plan_key])) : ?>
+                                <div class="ftp-image-preview">
+                                    <img src="<?php echo esc_url($settings['plan_images'][$plan_key]); ?>" alt="<?php echo esc_attr($plan['name']); ?>">
                                 </div>
                                 <?php endif; ?>
                             </div>

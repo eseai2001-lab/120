@@ -58,6 +58,16 @@ function ftp_get_menu_page_url() {
 }
 
 /**
+ * Get the special plans page URL
+ * 
+ * @return string Special plans page URL
+ */
+function ftp_get_special_plans_page_url() {
+    $settings = get_option('ftp_settings', array());
+    return !empty($settings['special_plans_page_url']) ? $settings['special_plans_page_url'] : '#ftp-special-plans';
+}
+
+/**
  * Get menu items data
  */
 function ftp_get_menu_items() {

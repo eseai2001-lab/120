@@ -44,12 +44,15 @@ function ftp_landing_page_shortcode() {
  */
 function ftp_header_shortcode() {
     $whatsapp_order_url = ftp_whatsapp_url(ftp_get_order_phone(), "Hello 120 Fruit Therapy! I would like to place an order. Please assist me with your menu options.");
+    $menu_page_url = ftp_get_menu_page_url();
+    $special_plans_url = ftp_get_special_plans_page_url();
+    $home_url = home_url('/');
     ob_start();
     ?>
     <header class="ftp-header" id="ftp-header">
         <div class="ftp-header-container">
             <div class="ftp-logo">
-                <a href="#ftp-hero">
+                <a href="<?php echo esc_url($home_url); ?>">
                     <img src="<?php echo esc_url(ftp_get_logo_url()); ?>" alt="120 Fruit Therapy Place" class="ftp-logo-img">
                 </a>
             </div>
@@ -58,11 +61,15 @@ function ftp_header_shortcode() {
             </button>
             <nav class="ftp-nav">
                 <ul class="ftp-nav-list">
-                    <li><a href="#ftp-hero" class="ftp-nav-link">Home</a></li>
-                    <li><a href="#ftp-menu" class="ftp-nav-link">Menu</a></li>
-                    <li><a href="#ftp-special-plans" class="ftp-nav-link">Special Plans</a></li>
+                    <li><a href="<?php echo esc_url($home_url); ?>" class="ftp-nav-link">Home</a></li>
+                    <li class="ftp-nav-dropdown">
+                        <a href="#ftp-menu" class="ftp-nav-link ftp-dropdown-trigger">Menu <span class="ftp-dropdown-arrow">▼</span></a>
+                        <ul class="ftp-dropdown-menu">
+                            <li><a href="<?php echo esc_url($menu_page_url); ?>">Therapeutic Menu</a></li>
+                            <li><a href="<?php echo esc_url($special_plans_url); ?>">Special Plans</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#ftp-gift-packages" class="ftp-nav-link">Gift Packages</a></li>
-                    <li><a href="#ftp-events" class="ftp-nav-link">Events</a></li>
                     <li><a href="#ftp-contact" class="ftp-nav-link">Contact</a></li>
                 </ul>
                 <a href="<?php echo esc_url($whatsapp_order_url); ?>" class="ftp-header-cta" target="_blank" rel="noopener">Order Now</a>
@@ -93,10 +100,10 @@ function ftp_hero_shortcode() {
             <p class="ftp-hero-text ftp-fade-in-up ftp-delay-2">Fresh fruit salads, parfaits, smoothies, mocktails and therapeutic wellness plans designed for your health journey.</p>
             <div class="ftp-hero-buttons ftp-fade-in-up ftp-delay-3">
                 <a href="<?php echo esc_url($whatsapp_order_url); ?>" class="ftp-btn ftp-btn-primary" target="_blank" rel="noopener">
-                    <span class="ftp-btn-icon">📱</span> Order via WhatsApp
+                    Order via WhatsApp
                 </a>
                 <a href="#ftp-menu" class="ftp-btn ftp-btn-secondary">
-                    <span class="ftp-btn-icon">📋</span> Explore Menu
+                    Explore Menu
                 </a>
             </div>
         </div>
@@ -166,9 +173,13 @@ function ftp_menu_full_shortcode() {
 
 /**
  * Special plans section shortcode (preview)
+ * Shows plan cards with image placeholders, title and description
  */
 function ftp_special_plans_section_shortcode() {
     $plans = ftp_get_special_plans();
+    $settings = get_option('ftp_settings', array());
+    $plan_images = isset($settings['plan_images']) ? $settings['plan_images'] : array();
+    $special_plans_url = ftp_get_special_plans_page_url();
     ob_start();
     ?>
     <section class="ftp-special-plans-section ftp-section" id="ftp-special-plans">
@@ -179,9 +190,18 @@ function ftp_special_plans_section_shortcode() {
             </div>
             <div class="ftp-plans-preview">
                 <div class="ftp-plans-grid">
-                    <?php foreach (array_slice($plans, 0, 6) as $plan) : ?>
+                    <?php foreach (array_slice($plans, 0, 6) as $index => $plan) : 
+                        $plan_key = sanitize_title($plan['name']);
+                        $image_url = isset($plan_images[$plan_key]) && !empty($plan_images[$plan_key]) ? $plan_images[$plan_key] : '';
+                    ?>
                     <div class="ftp-plan-card ftp-fade-in-up">
-                        <div class="ftp-plan-icon"><?php echo esc_html($plan['icon']); ?></div>
+                        <div class="ftp-plan-card-image" <?php if ($image_url) : ?>style="background-image: url('<?php echo esc_url($image_url); ?>');"<?php endif; ?>>
+                            <?php if (!$image_url) : ?>
+                            <div class="ftp-plan-card-placeholder">
+                                <span class="ftp-plan-placeholder-text"><?php echo esc_html($plan['name']); ?></span>
+                            </div>
+                            <?php endif; ?>
+                        </div>
                         <h3 class="ftp-plan-title"><?php echo esc_html($plan['name']); ?></h3>
                         <p class="ftp-plan-desc"><?php echo esc_html($plan['description']); ?></p>
                         <?php 
@@ -193,7 +213,7 @@ function ftp_special_plans_section_shortcode() {
                 </div>
             </div>
             <div class="ftp-section-cta ftp-fade-in-up">
-                <a href="#ftp-plans-full" class="ftp-btn ftp-btn-primary ftp-btn-large">View All Special Plans</a>
+                <a href="<?php echo esc_url($special_plans_url); ?>" class="ftp-btn ftp-btn-primary ftp-btn-large">View All Special Plans</a>
             </div>
         </div>
     </section>
@@ -471,11 +491,10 @@ function ftp_footer_shortcode() {
                 <div class="ftp-footer-links">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#ftp-hero">Home</a></li>
-                        <li><a href="#ftp-menu">Menu</a></li>
-                        <li><a href="#ftp-special-plans">Special Plans</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
+                        <li><a href="<?php echo esc_url(ftp_get_menu_page_url()); ?>">Menu</a></li>
+                        <li><a href="<?php echo esc_url(ftp_get_special_plans_page_url()); ?>">Special Plans</a></li>
                         <li><a href="#ftp-gift-packages">Gift Packages</a></li>
-                        <li><a href="#ftp-events">Events</a></li>
                     </ul>
                 </div>
                 <div class="ftp-footer-contact">

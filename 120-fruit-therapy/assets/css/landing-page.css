@@ -38,6 +38,28 @@
     color: var(--ftp-white);
     line-height: 1.6;
     overflow-x: hidden;
+    position: relative;
+}
+
+/* Floating sparkle particles - makes site more lively */
+.ftp-wrapper::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.03) 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(255, 0, 0, 0.03) 0%, transparent 25%);
+    pointer-events: none;
+    z-index: 0;
+    animation: ftp-ambient-glow 8s ease-in-out infinite alternate;
+}
+
+@keyframes ftp-ambient-glow {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
 }
 
 /* Container */
@@ -99,12 +121,12 @@
     right: 0;
     z-index: 1000;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.85));
-    padding: 10px 0;
+    padding: 8px 0;
     transition: var(--ftp-transition);
-    overflow: hidden;
+    overflow: visible;
 }
 
-/* Lighting hue animation background */
+/* Lighting hue animation background with gold sparkle */
 .ftp-header::before {
     content: '';
     position: absolute;
@@ -114,9 +136,9 @@
     height: 100%;
     background: linear-gradient(90deg, 
         transparent, 
-        rgba(255, 0, 0, 0.03), 
+        rgba(255, 215, 0, 0.03), 
         rgba(255, 0, 0, 0.08), 
-        rgba(255, 0, 0, 0.03), 
+        rgba(255, 215, 0, 0.03), 
         transparent);
     animation: ftp-header-glow 4s ease-in-out infinite;
     pointer-events: none;
@@ -130,7 +152,7 @@
 .ftp-header.scrolled {
     background: rgba(0, 0, 0, 0.98);
     backdrop-filter: blur(10px);
-    box-shadow: 0 2px 30px rgba(255, 0, 0, 0.15);
+    box-shadow: 0 2px 30px rgba(255, 0, 0, 0.15), 0 0 10px rgba(255, 215, 0, 0.1);
     padding: 8px 0;
 }
 
@@ -157,7 +179,7 @@
 }
 
 .ftp-header.scrolled .ftp-logo-img {
-    height: 30px;
+    height: 35px;
 }
 
 .ftp-logo-text {
@@ -179,11 +201,12 @@
     gap: 25px;
 }
 
+/* Header CTA with gold sparkle */
 .ftp-header-cta {
     display: inline-flex;
     align-items: center;
     padding: 8px 20px;
-    background: var(--ftp-primary-red);
+    background: linear-gradient(135deg, var(--ftp-primary-red), #cc0000);
     color: var(--ftp-white);
     text-decoration: none;
     font-size: 0.85rem;
@@ -193,13 +216,32 @@
     border-radius: 25px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.ftp-header-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+    transform: rotate(45deg);
+    animation: ftp-cta-sparkle 3s ease-in-out infinite;
+}
+
+@keyframes ftp-cta-sparkle {
+    0%, 100% { transform: translateX(-100%) rotate(45deg); }
+    50% { transform: translateX(100%) rotate(45deg); }
 }
 
 .ftp-header-cta:hover {
-    background: var(--ftp-white);
-    color: var(--ftp-primary-red);
+    background: linear-gradient(135deg, var(--ftp-gold), var(--ftp-gold-dark));
+    color: var(--ftp-black);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4), 0 0 15px rgba(255, 215, 0, 0.3);
 }
 
 .ftp-nav-link {
@@ -221,16 +263,79 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--ftp-primary-red);
+    background: linear-gradient(90deg, var(--ftp-primary-red), var(--ftp-gold));
     transition: var(--ftp-transition);
 }
 
 .ftp-nav-link:hover {
-    color: var(--ftp-primary-red);
+    color: var(--ftp-gold);
 }
 
 .ftp-nav-link:hover::after {
     width: 100%;
+}
+
+/* Dropdown Menu */
+.ftp-nav-dropdown {
+    position: relative;
+}
+
+.ftp-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ftp-dropdown-arrow {
+    font-size: 0.6rem;
+    transition: transform 0.3s ease;
+}
+
+.ftp-nav-dropdown:hover .ftp-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.ftp-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(0, 0, 0, 0.98);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    border-radius: 10px;
+    min-width: 200px;
+    padding: 10px 0;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.ftp-nav-dropdown:hover .ftp-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(5px);
+}
+
+.ftp-dropdown-menu li {
+    padding: 0;
+}
+
+.ftp-dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: var(--ftp-white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.ftp-dropdown-menu a:hover {
+    background: rgba(255, 0, 0, 0.1);
+    color: var(--ftp-gold);
+    padding-left: 25px;
 }
 
 /* Mobile Menu Toggle */
@@ -422,7 +527,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
     transition: left 0.5s ease;
 }
 
@@ -440,17 +545,18 @@
 }
 
 .ftp-btn-primary {
-    background: var(--ftp-primary-red);
+    background: linear-gradient(135deg, var(--ftp-primary-red), #cc0000);
     color: var(--ftp-white);
     box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
 }
 
 .ftp-btn-primary:hover {
-    background: #cc0000;
+    background: linear-gradient(135deg, var(--ftp-gold), var(--ftp-gold-dark));
+    color: var(--ftp-black);
     transform: translateY(-5px) scale(1.02);
     box-shadow: 
-        0 15px 35px rgba(255, 0, 0, 0.5),
-        0 0 20px rgba(255, 0, 0, 0.3);
+        0 15px 35px rgba(255, 215, 0, 0.5),
+        0 0 25px rgba(255, 215, 0, 0.4);
 }
 
 .ftp-btn-secondary {
@@ -460,10 +566,11 @@
 }
 
 .ftp-btn-secondary:hover {
-    background: var(--ftp-white);
+    background: var(--ftp-gold);
     color: var(--ftp-black);
+    border-color: var(--ftp-gold);
     transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 35px rgba(255, 215, 0, 0.3);
 }
 
 .ftp-btn-outline {
@@ -473,8 +580,9 @@
 }
 
 .ftp-btn-outline:hover {
-    background: var(--ftp-primary-red);
+    background: linear-gradient(135deg, var(--ftp-primary-red), #cc0000);
     color: var(--ftp-white);
+    border-color: var(--ftp-primary-red);
     transform: translateY(-5px) scale(1.02);
     box-shadow: 
         0 15px 35px rgba(255, 0, 0, 0.5),
@@ -509,6 +617,18 @@
     flex-direction: column;
     min-height: 350px;
     cursor: pointer;
+    animation: ftp-card-entrance 0.6s ease-out;
+}
+
+@keyframes ftp-card-entrance {
+    0% { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
 
 .ftp-menu-card::before {
@@ -531,8 +651,9 @@
         0 25px 50px rgba(255, 0, 0, 0.25),
         0 15px 30px rgba(0, 0, 0, 0.5),
         0 0 0 1px rgba(255, 0, 0, 0.5),
+        0 0 30px rgba(255, 215, 0, 0.15),
         inset 0 0 30px rgba(255, 0, 0, 0.05);
-    border-color: var(--ftp-primary-red);
+    border-color: var(--ftp-gold);
 }
 
 .ftp-menu-card:hover::before {
@@ -625,7 +746,7 @@
 }
 
 .ftp-menu-card:hover .ftp-menu-card-title {
-    color: var(--ftp-primary-red);
+    color: var(--ftp-gold);
 }
 
 .ftp-menu-card-desc {
@@ -659,12 +780,11 @@
     background: var(--ftp-card-bg);
     border: 1px solid var(--ftp-card-border);
     border-radius: 20px;
-    padding: 40px 30px;
+    overflow: hidden;
     text-align: center;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
-    overflow: hidden;
-    min-height: 300px;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
 }
@@ -676,7 +796,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
     transition: left 0.6s ease;
 }
 
@@ -689,8 +809,53 @@
     box-shadow: 
         0 25px 50px rgba(255, 0, 0, 0.25),
         0 15px 30px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(255, 0, 0, 0.5);
+        0 0 0 1px rgba(255, 0, 0, 0.5),
+        0 0 30px rgba(255, 215, 0, 0.2);
     border-color: var(--ftp-primary-red);
+}
+
+/* Plan Card Image */
+.ftp-plan-card-image {
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(27, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.ftp-plan-card-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(to top, var(--ftp-card-bg), transparent);
+}
+
+.ftp-plan-card-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(27, 0, 0, 0.8));
+    animation: ftp-plan-placeholder-pulse 3s ease-in-out infinite;
+}
+
+@keyframes ftp-plan-placeholder-pulse {
+    0%, 100% { background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(27, 0, 0, 0.8)); }
+    50% { background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(27, 0, 0, 0.8)); }
+}
+
+.ftp-plan-placeholder-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--ftp-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .ftp-plan-icon {
@@ -707,21 +872,25 @@
 .ftp-plan-title {
     font-size: 1.4rem;
     color: var(--ftp-white);
-    margin-bottom: 15px;
+    margin: 20px 25px 15px;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 .ftp-plan-card:hover .ftp-plan-title {
-    color: var(--ftp-primary-red);
+    color: var(--ftp-gold);
 }
 
 .ftp-plan-desc {
     font-size: 0.95rem;
     color: var(--ftp-text-muted);
-    margin-bottom: 25px;
+    margin: 0 25px 25px;
     line-height: 1.6;
     flex: 1;
+}
+
+.ftp-plan-card .ftp-btn {
+    margin: 0 25px 25px;
 }
 
 /* ===================== GIFT PACKAGES ===================== */
@@ -1499,6 +1668,24 @@
     .ftp-nav-list {
         flex-direction: column;
         gap: 20px;
+    }
+    
+    /* Mobile dropdown */
+    .ftp-dropdown-menu {
+        position: static;
+        transform: none;
+        background: rgba(27, 0, 0, 0.5);
+        border: none;
+        border-radius: 5px;
+        min-width: auto;
+        margin-top: 10px;
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .ftp-dropdown-menu a {
+        padding: 8px 15px;
+        font-size: 0.9rem;
     }
     
     .ftp-header-cta {
