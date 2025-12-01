@@ -54,6 +54,14 @@ function ftp_sanitize_settings($input) {
         $sanitized['special_plans_page_url'] = esc_url_raw($input['special_plans_page_url']);
     }
     
+    if (isset($input['instagram_url'])) {
+        $sanitized['instagram_url'] = esc_url_raw($input['instagram_url']);
+    }
+    
+    if (isset($input['tiktok_url'])) {
+        $sanitized['tiktok_url'] = esc_url_raw($input['tiktok_url']);
+    }
+    
     if (isset($input['category_images']) && is_array($input['category_images'])) {
         $sanitized['category_images'] = array_map('esc_url_raw', $input['category_images']);
     }
@@ -164,6 +172,42 @@ function ftp_settings_page() {
                                    value="<?php echo esc_attr($settings['special_plans_page_url'] ?? ''); ?>" 
                                    class="regular-text">
                             <p class="description">Enter the URL of the page containing the [ftp_special_plans_full] shortcode.</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="ftp-settings-section">
+                <h2>Social Media Links</h2>
+                <p class="description">Add your social media URLs for the footer section.</p>
+                
+                <table class="form-table">
+                    <tr>
+                        <th scope="row">
+                            <label for="ftp_instagram_url">Instagram URL</label>
+                        </th>
+                        <td>
+                            <input type="text" 
+                                   id="ftp_instagram_url" 
+                                   name="ftp_settings[instagram_url]" 
+                                   value="<?php echo esc_attr($settings['instagram_url'] ?? ''); ?>" 
+                                   class="regular-text"
+                                   placeholder="https://instagram.com/yourprofile">
+                            <p class="description">Enter your Instagram profile URL.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="ftp_tiktok_url">TikTok URL</label>
+                        </th>
+                        <td>
+                            <input type="text" 
+                                   id="ftp_tiktok_url" 
+                                   name="ftp_settings[tiktok_url]" 
+                                   value="<?php echo esc_attr($settings['tiktok_url'] ?? ''); ?>" 
+                                   class="regular-text"
+                                   placeholder="https://tiktok.com/@yourprofile">
+                            <p class="description">Enter your TikTok profile URL.</p>
                         </td>
                     </tr>
                 </table>

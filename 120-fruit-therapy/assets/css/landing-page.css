@@ -173,13 +173,15 @@
 }
 
 .ftp-logo-img {
-    height: 35px;
+    height: 28px;
     width: auto;
+    max-width: 80px;
+    object-fit: contain;
     transition: var(--ftp-transition);
 }
 
 .ftp-header.scrolled .ftp-logo-img {
-    height: 35px;
+    height: 28px;
 }
 
 .ftp-logo-text {
@@ -1467,8 +1469,10 @@
 }
 
 .ftp-footer-logo {
-    height: 50px;
+    height: 30px;
     width: auto;
+    max-width: 80px;
+    object-fit: contain;
     margin-bottom: 12px;
 }
 
@@ -1499,10 +1503,27 @@
     color: var(--ftp-text-muted);
     text-decoration: none;
     transition: var(--ftp-transition);
+    position: relative;
+    display: inline-block;
+}
+
+.ftp-footer-links a::before {
+    content: '✦';
+    position: absolute;
+    left: -15px;
+    opacity: 0;
+    color: var(--ftp-gold);
+    transition: all 0.3s ease;
+    text-shadow: var(--ftp-gold-glow);
+}
+
+.ftp-footer-links a:hover::before {
+    opacity: 1;
 }
 
 .ftp-footer-links a:hover {
-    color: var(--ftp-primary-red);
+    color: var(--ftp-gold);
+    text-shadow: var(--ftp-gold-glow);
 }
 
 .ftp-footer-contact p {
@@ -1513,17 +1534,52 @@
 
 .ftp-social-links {
     display: flex;
-    gap: 15px;
+    gap: 20px;
 }
 
 .ftp-social-link {
-    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     text-decoration: none;
     transition: var(--ftp-transition);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .ftp-social-link:hover {
     transform: scale(1.2);
+    box-shadow: var(--ftp-gold-sparkle);
+}
+
+.ftp-social-link svg {
+    width: 22px;
+    height: 22px;
+    fill: var(--ftp-white);
+    transition: var(--ftp-transition);
+}
+
+.ftp-social-link:hover svg {
+    fill: var(--ftp-gold);
+}
+
+.ftp-social-link.ftp-instagram:hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.ftp-social-link.ftp-instagram:hover svg {
+    fill: var(--ftp-white);
+}
+
+.ftp-social-link.ftp-tiktok:hover {
+    background: var(--ftp-black);
+    border: 1px solid var(--ftp-white);
+}
+
+.ftp-social-link.ftp-tiktok:hover svg {
+    fill: var(--ftp-white);
 }
 
 .ftp-footer-bottom {
