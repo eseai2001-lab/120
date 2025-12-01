@@ -121,9 +121,11 @@
     right: 0;
     z-index: 1000;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.85));
-    padding: 8px 0;
-    transition: var(--ftp-transition);
+    padding: 6px 0;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
     overflow: visible;
+    height: auto;
+    min-height: 50px;
 }
 
 /* Lighting hue animation background with gold sparkle */
@@ -153,7 +155,15 @@
     background: rgba(0, 0, 0, 0.98);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 30px rgba(255, 0, 0, 0.15), 0 0 10px rgba(255, 215, 0, 0.1);
-    padding: 8px 0;
+    padding: 6px 0;
+}
+
+/* Ensure header stays visible - remove hide/show behavior */
+.ftp-header.hidden,
+.ftp-header.visible {
+    transform: none !important;
+    top: 0 !important;
+    opacity: 1 !important;
 }
 
 .ftp-header-container {
@@ -163,6 +173,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    min-height: 38px;
 }
 
 .ftp-logo a {
@@ -173,15 +184,15 @@
 }
 
 .ftp-logo-img {
-    height: 28px;
+    height: 26px;
     width: auto;
-    max-width: 80px;
+    max-width: 70px;
     object-fit: contain;
-    transition: var(--ftp-transition);
+    transition: none;
 }
 
 .ftp-header.scrolled .ftp-logo-img {
-    height: 28px;
+    height: 26px;
 }
 
 .ftp-logo-text {

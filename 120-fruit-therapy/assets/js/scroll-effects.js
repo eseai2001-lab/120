@@ -150,22 +150,11 @@
     function handleHeaderScroll() {
         var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        // Add scrolled class for styling
+        // Only add scrolled class for styling, no hide/show behavior
         if (scrollTop > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
-        }
-        
-        // Hide/show header based on scroll direction
-        if (scrollTop > lastScrollTop && scrollTop > 200) {
-            // Scrolling down
-            header.classList.add('hidden');
-            header.classList.remove('visible');
-        } else {
-            // Scrolling up
-            header.classList.remove('hidden');
-            header.classList.add('visible');
         }
         
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
