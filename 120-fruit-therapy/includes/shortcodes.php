@@ -434,20 +434,20 @@ function ftp_map_shortcode() {
     <section class="ftp-map ftp-section" id="ftp-map">
         <div class="ftp-map-container">
             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.3!2d7.4!3d6.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zTWFybGltYSBCdWlsZGluZywgVW5pdmVyc2l0eSBvZiBOaWdlcmlhIE5zdWtrYQ!5e0!3m2!1sen!2sng!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.2954548847!2d7.4155387!3d6.8722839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1044959e2c2d4c1d%3A0x8c7b3e7c9a1e8f0a!2sUniversity%20of%20Nigeria%2C%20Nsukka!5e0!3m2!1sen!2sng!4v1701435600000!5m2!1sen!2sng"
                 width="100%" 
                 height="450" 
                 style="border:0;" 
                 allowfullscreen="" 
                 loading="lazy" 
                 referrerpolicy="no-referrer-when-downgrade"
-                title="120 Fruit Therapy Place Location">
+                title="120 Fruit Therapy Place - Marlima Building, University of Nigeria Nsukka">
             </iframe>
         </div>
         <div class="ftp-map-overlay">
             <div class="ftp-map-info">
                 <h3>Find Us Here</h3>
-                <p>Marlima Building, University of Nigeria Nsukka, Enugu, Nigeria</p>
+                <p>📍 Marlima Building, University of Nigeria Nsukka, Enugu State, Nigeria</p>
             </div>
         </div>
     </section>

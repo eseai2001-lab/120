@@ -16,6 +16,12 @@
     --ftp-red-glow: 0 0 20px rgba(255, 0, 0, 0.3);
     --ftp-transition: all 0.3s ease;
     --ftp-font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    /* Sparkling Gold Colors */
+    --ftp-gold: #FFD700;
+    --ftp-gold-light: #FFEC8B;
+    --ftp-gold-dark: #DAA520;
+    --ftp-gold-glow: 0 0 15px rgba(255, 215, 0, 0.4);
+    --ftp-gold-sparkle: 0 0 25px rgba(255, 215, 0, 0.6);
 }
 
 /* Base Reset for Plugin */
@@ -60,6 +66,17 @@
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--ftp-white) 0%, var(--ftp-gold-light) 50%, var(--ftp-white) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: ftp-title-shimmer 3s ease-in-out infinite;
+    background-size: 200% auto;
+}
+
+@keyframes ftp-title-shimmer {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 200% center; }
 }
 
 .ftp-section-subtitle {
@@ -307,7 +324,20 @@
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 4px;
-    text-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    text-shadow: 
+        0 0 30px rgba(255, 0, 0, 0.5),
+        0 0 60px rgba(255, 215, 0, 0.3);
+    background: linear-gradient(135deg, var(--ftp-white), var(--ftp-gold-light), var(--ftp-white));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: ftp-hero-shimmer 4s ease-in-out infinite;
+}
+
+@keyframes ftp-hero-shimmer {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 200% center; }
 }
 
 .ftp-hero-subtitle {
@@ -783,9 +813,10 @@
     content: '✓';
     position: absolute;
     left: 0;
-    color: var(--ftp-primary-red);
+    color: var(--ftp-gold);
     font-weight: bold;
     transition: transform 0.3s ease;
+    text-shadow: var(--ftp-gold-glow);
 }
 
 .ftp-package-card:hover .ftp-package-features li::before {
@@ -949,14 +980,14 @@
     position: absolute;
     top: -10px;
     right: 20px;
-    background: var(--ftp-primary-red);
-    color: var(--ftp-white);
+    background: linear-gradient(135deg, var(--ftp-gold), var(--ftp-gold-dark));
+    color: var(--ftp-black);
     padding: 5px 15px;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 1px;
-    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+    box-shadow: var(--ftp-gold-sparkle);
     animation: ftp-badge-pulse 2s ease-in-out infinite;
 }
 
@@ -1066,16 +1097,26 @@
 .ftp-stat-number {
     font-size: 4rem;
     font-weight: 800;
-    color: var(--ftp-primary-red);
+    background: linear-gradient(135deg, var(--ftp-primary-red), var(--ftp-gold), var(--ftp-primary-red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     display: inline;
-    text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.5)) drop-shadow(0 0 30px rgba(255, 215, 0, 0.3));
+    animation: ftp-stat-glow 2s ease-in-out infinite;
+}
+
+@keyframes ftp-stat-glow {
+    0%, 100% { filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.5)) drop-shadow(0 0 30px rgba(255, 215, 0, 0.3)); }
+    50% { filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.7)) drop-shadow(0 0 40px rgba(255, 215, 0, 0.5)); }
 }
 
 .ftp-stat-suffix {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--ftp-primary-red);
+    color: var(--ftp-gold);
     display: inline;
+    text-shadow: var(--ftp-gold-glow);
 }
 
 .ftp-stat-label {

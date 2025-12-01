@@ -21,11 +21,30 @@
     padding: 40px;
     margin-bottom: 30px;
     transition: var(--ftp-transition);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glowing border effect */
+.ftp-plan-detail-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--ftp-gold), var(--ftp-primary-red), transparent);
+    animation: ftp-plan-border-glow 4s ease-in-out infinite;
+}
+
+@keyframes ftp-plan-border-glow {
+    0%, 100% { left: -100%; }
+    50% { left: 100%; }
 }
 
 .ftp-plan-detail-card:hover {
-    border-color: var(--ftp-primary-red);
-    box-shadow: 0 20px 40px rgba(255, 0, 0, 0.15);
+    border-color: var(--ftp-gold);
+    box-shadow: 0 20px 40px rgba(255, 0, 0, 0.15), var(--ftp-gold-glow);
 }
 
 .ftp-plan-detail-header {
@@ -35,16 +54,9 @@
     margin-bottom: 25px;
 }
 
+/* Hide icon - replaced with glowing title */
 .ftp-plan-detail-icon {
-    font-size: 3.5rem;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 0, 0, 0.1);
-    border-radius: 50%;
-    border: 2px solid rgba(255, 0, 0, 0.3);
+    display: none;
 }
 
 .ftp-plan-detail-info {
@@ -53,9 +65,15 @@
 
 .ftp-plan-detail-title {
     font-size: 1.8rem;
-    color: var(--ftp-white);
     font-weight: 700;
     margin-bottom: 10px;
+    background: linear-gradient(135deg, var(--ftp-white) 0%, var(--ftp-gold-light) 50%, var(--ftp-white) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: ftp-title-shimmer 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
 }
 
 .ftp-plan-detail-desc {
@@ -95,9 +113,19 @@
 
 .ftp-plan-option-price {
     font-size: 1.5rem;
-    color: var(--ftp-primary-red);
     font-weight: 700;
     margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--ftp-gold-light), var(--ftp-gold), var(--ftp-gold-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+    animation: ftp-price-glow 2s ease-in-out infinite;
+}
+
+@keyframes ftp-price-glow {
+    0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); }
+    50% { filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.8)); }
 }
 
 .ftp-plan-option .ftp-btn {
@@ -197,9 +225,12 @@
 
 .ftp-plans-testimonials h3 {
     font-size: 1.5rem;
-    color: var(--ftp-white);
     margin-bottom: 40px;
     text-align: center;
+    background: linear-gradient(135deg, var(--ftp-white) 0%, var(--ftp-gold-light) 50%, var(--ftp-white) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .ftp-testimonials-grid {
@@ -214,18 +245,17 @@
     border-radius: 20px;
     padding: 30px;
     text-align: center;
+    transition: var(--ftp-transition);
 }
 
+.ftp-testimonial-card:hover {
+    border-color: var(--ftp-gold);
+    box-shadow: var(--ftp-gold-glow);
+}
+
+/* Hide testimonial avatar icon */
 .ftp-testimonial-avatar {
-    width: 80px;
-    height: 80px;
-    background: rgba(255, 0, 0, 0.1);
-    border-radius: 50%;
-    margin: 0 auto 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
+    display: none;
 }
 
 .ftp-testimonial-text {
@@ -252,9 +282,12 @@
 
 .ftp-plans-faq h3 {
     font-size: 1.5rem;
-    color: var(--ftp-white);
     margin-bottom: 40px;
     text-align: center;
+    background: linear-gradient(135deg, var(--ftp-white) 0%, var(--ftp-gold-light) 50%, var(--ftp-white) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .ftp-faq-item {
@@ -286,8 +319,9 @@
 
 .ftp-faq-toggle {
     font-size: 1.5rem;
-    color: var(--ftp-primary-red);
+    color: var(--ftp-gold);
     transition: var(--ftp-transition);
+    text-shadow: var(--ftp-gold-glow);
 }
 
 .ftp-faq-item.active .ftp-faq-toggle {

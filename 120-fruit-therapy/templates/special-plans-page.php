@@ -26,7 +26,6 @@ $plans = ftp_get_special_plans();
             <?php foreach ($plans as $plan) : ?>
             <div class="ftp-plan-detail-card ftp-fade-in-up">
                 <div class="ftp-plan-detail-header">
-                    <div class="ftp-plan-detail-icon"><?php echo esc_html($plan['icon']); ?></div>
                     <div class="ftp-plan-detail-info">
                         <h2 class="ftp-plan-detail-title"><?php echo esc_html($plan['name']); ?> Plan</h2>
                         <p class="ftp-plan-detail-desc"><?php echo esc_html($plan['description']); ?></p>
@@ -66,19 +65,16 @@ $plans = ftp_get_special_plans();
                 <h3>What Our Customers Say</h3>
                 <div class="ftp-testimonials-grid">
                     <div class="ftp-testimonial-card ftp-fade-in-up">
-                        <div class="ftp-testimonial-avatar">👩</div>
                         <p class="ftp-testimonial-text">"The weight loss plan helped me lose 5kg in just 30 days! The fruits were always fresh and the support was amazing."</p>
                         <p class="ftp-testimonial-name">Chioma A.</p>
                         <p class="ftp-testimonial-plan">Weight Loss Plan</p>
                     </div>
                     <div class="ftp-testimonial-card ftp-fade-in-up">
-                        <div class="ftp-testimonial-avatar">👨</div>
                         <p class="ftp-testimonial-text">"My energy levels have improved significantly since starting the Energy Boost plan. I feel more active throughout the day!"</p>
                         <p class="ftp-testimonial-name">Emeka O.</p>
                         <p class="ftp-testimonial-plan">Energy Boost Plan</p>
                     </div>
                     <div class="ftp-testimonial-card ftp-fade-in-up">
-                        <div class="ftp-testimonial-avatar">👩</div>
                         <p class="ftp-testimonial-text">"The Clear Skin plan worked wonders for my complexion. My skin is glowing and I've received so many compliments!"</p>
                         <p class="ftp-testimonial-name">Adaeze N.</p>
                         <p class="ftp-testimonial-plan">Clear Skin + Glow Plan</p>

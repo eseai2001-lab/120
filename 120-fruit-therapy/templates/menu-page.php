@@ -27,7 +27,6 @@ $menu_items = ftp_get_menu_items();
                 <div class="ftp-menu-nav-list">
                     <?php foreach ($menu_items as $key => $category) : ?>
                     <a href="#menu-<?php echo esc_attr($key); ?>" class="ftp-menu-nav-item">
-                        <span class="ftp-menu-nav-icon"><?php echo esc_html($category['icon']); ?></span>
                         <?php echo esc_html($category['title']); ?>
                     </a>
                     <?php endforeach; ?>
@@ -38,7 +37,6 @@ $menu_items = ftp_get_menu_items();
             <?php foreach ($menu_items as $key => $category) : ?>
             <div class="ftp-menu-category" id="menu-<?php echo esc_attr($key); ?>">
                 <div class="ftp-category-header">
-                    <span class="ftp-category-icon"><?php echo esc_html($category['icon']); ?></span>
                     <h2 class="ftp-category-title"><?php echo esc_html($category['title']); ?></h2>
                     <p class="ftp-category-desc"><?php echo esc_html($category['description']); ?></p>
                 </div>

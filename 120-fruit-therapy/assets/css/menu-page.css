@@ -25,16 +25,38 @@
     margin-bottom: 30px;
     padding-bottom: 15px;
     border-bottom: 2px solid rgba(255, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
 }
 
-.ftp-category-icon {
-    font-size: 2.5rem;
+/* Glowing underline animation */
+.ftp-category-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--ftp-gold), var(--ftp-primary-red), transparent);
+    animation: ftp-category-glow 3s ease-in-out infinite;
+}
+
+@keyframes ftp-category-glow {
+    0%, 100% { left: -100%; }
+    50% { left: 100%; }
 }
 
 .ftp-category-title {
     font-size: 1.8rem;
-    color: var(--ftp-white);
     font-weight: 600;
+    background: linear-gradient(135deg, var(--ftp-white) 0%, var(--ftp-gold-light) 50%, var(--ftp-white) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: ftp-title-shimmer 3s ease-in-out infinite;
+    text-shadow: none;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
 }
 
 .ftp-category-desc {
@@ -105,13 +127,29 @@
     font-size: 1.2rem;
     color: var(--ftp-white);
     font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.ftp-menu-item-card:hover .ftp-menu-item-name {
+    color: var(--ftp-gold-light);
 }
 
 .ftp-menu-item-price {
     font-size: 1.1rem;
-    color: var(--ftp-primary-red);
     font-weight: 700;
     white-space: nowrap;
+    background: linear-gradient(135deg, var(--ftp-gold-light), var(--ftp-gold), var(--ftp-gold-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+    animation: ftp-price-glow 2s ease-in-out infinite;
+}
+
+@keyframes ftp-price-glow {
+    0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4)); }
+    50% { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7)); }
 }
 
 .ftp-menu-item-desc {
@@ -183,13 +221,15 @@
 
 .ftp-menu-nav-item:hover,
 .ftp-menu-nav-item.active {
-    background: var(--ftp-primary-red);
+    background: linear-gradient(135deg, var(--ftp-primary-red), var(--ftp-gold-dark));
     color: var(--ftp-white);
-    border-color: var(--ftp-primary-red);
+    border-color: var(--ftp-gold);
+    box-shadow: var(--ftp-gold-glow), var(--ftp-red-glow);
 }
 
+/* Remove nav icons - not displayed */
 .ftp-menu-nav-icon {
-    font-size: 1.1rem;
+    display: none;
 }
 
 /* Back to Top Button for Menu */
