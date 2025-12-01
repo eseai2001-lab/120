@@ -10,12 +10,17 @@ if (!defined('ABSPATH')) {
 
 /**
  * Get the logo URL
- * Assets are stored in the repository root, alongside the plugin folder
- * This function allows the URL to be filtered for custom configurations
+ * Uses settings if available, otherwise falls back to default
  * 
  * @return string Logo URL
  */
 function ftp_get_logo_url() {
+    // Check if we have a setting for logo
+    $settings = get_option('ftp_settings', array());
+    if (!empty($settings['logo_url'])) {
+        return $settings['logo_url'];
+    }
+    
     // Default logo path - assets are in repository root alongside plugin folder
     $logo_url = FTP_PLUGIN_URL . '../Navy and Pink Modern Online Store Logo.webp';
     
@@ -29,11 +34,27 @@ function ftp_get_logo_url() {
  * @return string Video URL
  */
 function ftp_get_hero_video_url() {
+    // Check if we have a setting for video
+    $settings = get_option('ftp_settings', array());
+    if (!empty($settings['hero_video_url'])) {
+        return $settings['hero_video_url'];
+    }
+    
     // Default video path - assets are in repository root alongside plugin folder
     $video_url = FTP_PLUGIN_URL . '../motion2Fast_Realistic_video_a_rich_parfait_spilling_from_a_cur_0.mp4';
     
     // Allow the URL to be filtered for custom installations
     return apply_filters('ftp_hero_video_url', $video_url);
+}
+
+/**
+ * Get the menu page URL for floating button
+ * 
+ * @return string Menu page URL
+ */
+function ftp_get_menu_page_url() {
+    $settings = get_option('ftp_settings', array());
+    return !empty($settings['menu_page_url']) ? $settings['menu_page_url'] : '#ftp-menu-full';
 }
 
 /**

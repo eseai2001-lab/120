@@ -26,11 +26,24 @@ define('FTP_ASSETS_URL', FTP_PLUGIN_URL . 'assets/');
 require_once FTP_PLUGIN_DIR . 'includes/helpers.php';
 require_once FTP_PLUGIN_DIR . 'includes/enqueue.php';
 require_once FTP_PLUGIN_DIR . 'includes/shortcodes.php';
+require_once FTP_PLUGIN_DIR . 'includes/admin-settings.php';
 
 /**
  * Plugin activation hook
  */
 function ftp_activate() {
+    // Set default options
+    $default_options = array(
+        'logo_url' => '',
+        'hero_video_url' => '',
+        'menu_page_url' => '',
+        'category_images' => array(),
+    );
+    
+    if (!get_option('ftp_settings')) {
+        add_option('ftp_settings', $default_options);
+    }
+    
     // Flush rewrite rules on activation
     flush_rewrite_rules();
 }

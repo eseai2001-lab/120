@@ -319,25 +319,49 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 50px;
-    transition: var(--ftp-transition);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     cursor: pointer;
     border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.ftp-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.ftp-btn:hover::before {
+    left: 100%;
 }
 
 .ftp-btn-icon {
     font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.ftp-btn:hover .ftp-btn-icon {
+    transform: scale(1.2);
 }
 
 .ftp-btn-primary {
     background: var(--ftp-primary-red);
     color: var(--ftp-white);
-    box-shadow: var(--ftp-red-glow);
+    box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
 }
 
 .ftp-btn-primary:hover {
     background: #cc0000;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+        0 15px 35px rgba(255, 0, 0, 0.5),
+        0 0 20px rgba(255, 0, 0, 0.3);
 }
 
 .ftp-btn-secondary {
@@ -349,7 +373,8 @@
 .ftp-btn-secondary:hover {
     background: var(--ftp-white);
     color: var(--ftp-black);
-    transform: translateY(-3px);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
 }
 
 .ftp-btn-outline {
@@ -361,8 +386,10 @@
 .ftp-btn-outline:hover {
     background: var(--ftp-primary-red);
     color: var(--ftp-white);
-    transform: translateY(-3px);
-    box-shadow: var(--ftp-red-glow);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+        0 15px 35px rgba(255, 0, 0, 0.5),
+        0 0 20px rgba(255, 0, 0, 0.3);
 }
 
 .ftp-btn-large {
@@ -381,15 +408,18 @@
     gap: 30px;
 }
 
+/* Menu Card with Image Placeholder */
 .ftp-menu-card {
     background: var(--ftp-card-bg);
     border: 1px solid var(--ftp-card-border);
     border-radius: 20px;
-    padding: 40px 30px;
-    text-align: center;
-    transition: var(--ftp-transition);
-    position: relative;
     overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 350px;
+    cursor: pointer;
 }
 
 .ftp-menu-card::before {
@@ -398,15 +428,21 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--ftp-primary-red), transparent);
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), transparent);
     opacity: 0;
-    transition: var(--ftp-transition);
+    transition: opacity 0.4s ease;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .ftp-menu-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(255, 0, 0, 0.2);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 
+        0 25px 50px rgba(255, 0, 0, 0.25),
+        0 15px 30px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 0, 0, 0.5),
+        inset 0 0 30px rgba(255, 0, 0, 0.05);
     border-color: var(--ftp-primary-red);
 }
 
@@ -414,29 +450,109 @@
     opacity: 1;
 }
 
+/* Card Image Area */
+.ftp-menu-card-image {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(27, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.ftp-menu-card-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(to top, var(--ftp-card-bg), transparent);
+}
+
+.ftp-menu-card-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(27, 0, 0, 0.8));
+}
+
+.ftp-placeholder-icon {
+    font-size: 4rem;
+    filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.3));
+    transition: transform 0.4s ease;
+}
+
+.ftp-menu-card:hover .ftp-placeholder-icon {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.ftp-menu-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 0, 0, 0), rgba(255, 0, 0, 0.1));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.ftp-menu-card:hover .ftp-menu-card-overlay {
+    opacity: 1;
+}
+
+/* Card Content */
+.ftp-menu-card-content {
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    z-index: 2;
+}
+
 .ftp-menu-card-icon {
     font-size: 3rem;
     margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.ftp-menu-card:hover .ftp-menu-card-icon {
+    transform: scale(1.1);
 }
 
 .ftp-menu-card-title {
     font-size: 1.3rem;
     color: var(--ftp-white);
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     font-weight: 600;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s ease;
+}
+
+.ftp-menu-card:hover .ftp-menu-card-title {
+    color: var(--ftp-primary-red);
 }
 
 .ftp-menu-card-desc {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--ftp-text-muted);
-    margin-bottom: 20px;
     line-height: 1.6;
+    flex: 1;
 }
 
 .ftp-menu-card-price {
     font-size: 1.2rem;
     color: var(--ftp-primary-red);
     font-weight: 700;
+    margin-top: auto;
+    padding-top: 15px;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
 }
 
 /* ===================== SPECIAL PLANS SECTION ===================== */
@@ -456,18 +572,47 @@
     border-radius: 20px;
     padding: 40px 30px;
     text-align: center;
-    transition: var(--ftp-transition);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ftp-plan-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.ftp-plan-card:hover::before {
+    left: 100%;
 }
 
 .ftp-plan-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(255, 0, 0, 0.2);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 
+        0 25px 50px rgba(255, 0, 0, 0.25),
+        0 15px 30px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 0, 0, 0.5);
     border-color: var(--ftp-primary-red);
 }
 
 .ftp-plan-icon {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.3));
+    transition: transform 0.4s ease;
+}
+
+.ftp-plan-card:hover .ftp-plan-icon {
+    transform: scale(1.15) rotate(5deg);
 }
 
 .ftp-plan-title {
@@ -475,6 +620,11 @@
     color: var(--ftp-white);
     margin-bottom: 15px;
     font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.ftp-plan-card:hover .ftp-plan-title {
+    color: var(--ftp-primary-red);
 }
 
 .ftp-plan-desc {
@@ -482,6 +632,7 @@
     color: var(--ftp-text-muted);
     margin-bottom: 25px;
     line-height: 1.6;
+    flex: 1;
 }
 
 /* ===================== GIFT PACKAGES ===================== */
@@ -501,12 +652,43 @@
     border-radius: 20px;
     padding: 40px 30px;
     text-align: center;
-    transition: var(--ftp-transition);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ftp-package-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent, rgba(255, 0, 0, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: ftp-rotate 4s linear infinite paused;
+}
+
+.ftp-package-card:hover::before {
+    opacity: 1;
+    animation-play-state: running;
+}
+
+@keyframes ftp-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .ftp-package-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(255, 0, 0, 0.2);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 
+        0 25px 50px rgba(255, 0, 0, 0.25),
+        0 15px 30px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 0, 0, 0.5);
     border-color: var(--ftp-primary-red);
 }
 
@@ -531,6 +713,11 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     padding-left: 25px;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.ftp-package-card:hover .ftp-package-features li {
+    color: var(--ftp-white);
 }
 
 .ftp-package-features li::before {
@@ -539,6 +726,11 @@
     left: 0;
     color: var(--ftp-primary-red);
     font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.ftp-package-card:hover .ftp-package-features li::before {
+    transform: scale(1.2);
 }
 
 /* ===================== WELLNESS EVENTS ===================== */
@@ -558,18 +750,48 @@
     border-radius: 20px;
     padding: 50px 40px;
     text-align: center;
-    transition: var(--ftp-transition);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ftp-event-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--ftp-primary-red), transparent, var(--ftp-primary-red));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.ftp-event-card:hover::before {
+    transform: scaleX(1);
 }
 
 .ftp-event-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(255, 0, 0, 0.2);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 
+        0 25px 50px rgba(255, 0, 0, 0.25),
+        0 15px 30px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 0, 0, 0.5);
     border-color: var(--ftp-primary-red);
 }
 
 .ftp-event-icon {
     font-size: 4rem;
     margin-bottom: 25px;
+    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.3));
+    transition: transform 0.4s ease;
+}
+
+.ftp-event-card:hover .ftp-event-icon {
+    transform: scale(1.15) rotate(-5deg);
 }
 
 .ftp-event-title {
@@ -577,6 +799,11 @@
     color: var(--ftp-white);
     margin-bottom: 15px;
     font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.ftp-event-card:hover .ftp-event-title {
+    color: var(--ftp-primary-red);
 }
 
 .ftp-event-desc {
@@ -592,6 +819,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+    flex: 1;
 }
 
 .ftp-event-services li {
@@ -601,6 +829,13 @@
     border-radius: 20px;
     font-size: 0.9rem;
     border: 1px solid rgba(255, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.ftp-event-card:hover .ftp-event-services li {
+    background: rgba(255, 0, 0, 0.2);
+    color: var(--ftp-white);
+    border-color: rgba(255, 0, 0, 0.4);
 }
 
 /* ===================== SPECIAL OFFERS ===================== */
@@ -621,12 +856,34 @@
     padding: 40px 30px;
     text-align: center;
     position: relative;
-    transition: var(--ftp-transition);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ftp-offer-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.ftp-offer-card:hover::before {
+    left: 150%;
 }
 
 .ftp-offer-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(255, 0, 0, 0.3);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 
+        0 25px 50px rgba(255, 0, 0, 0.35),
+        0 15px 30px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(255, 0, 0, 0.2);
 }
 
 .ftp-offer-badge {
@@ -640,6 +897,13 @@
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+    animation: ftp-badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes ftp-badge-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
 .ftp-offer-title {
@@ -647,12 +911,18 @@
     color: var(--ftp-white);
     margin-bottom: 15px;
     margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+.ftp-offer-card:hover .ftp-offer-title {
+    color: var(--ftp-primary-red);
 }
 
 .ftp-offer-desc {
     color: var(--ftp-text-muted);
     margin-bottom: 25px;
     font-size: 1rem;
+    flex: 1;
 }
 
 /* ===================== MISSION SECTION ===================== */
@@ -727,6 +997,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.ftp-stat-item:hover {
+    transform: scale(1.1);
 }
 
 .ftp-stat-number {
@@ -734,6 +1009,7 @@
     font-weight: 800;
     color: var(--ftp-primary-red);
     display: inline;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
 }
 
 .ftp-stat-suffix {
@@ -768,23 +1044,60 @@
     border-radius: 20px;
     padding: 40px 30px;
     text-align: center;
-    transition: var(--ftp-transition);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ftp-contact-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: var(--ftp-primary-red);
+    transition: width 0.4s ease;
+}
+
+.ftp-contact-card:hover::before {
+    width: 80%;
 }
 
 .ftp-contact-card:hover {
+    transform: translateY(-15px) scale(1.02);
     border-color: var(--ftp-primary-red);
-    box-shadow: var(--ftp-red-glow);
+    box-shadow: 
+        0 25px 50px rgba(255, 0, 0, 0.25),
+        0 15px 30px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 0, 0, 0.5);
 }
 
 .ftp-contact-icon {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.3));
+    transition: transform 0.4s ease;
+}
+
+.ftp-contact-card:hover .ftp-contact-icon {
+    transform: scale(1.2) rotate(10deg);
 }
 
 .ftp-contact-title {
     font-size: 1.3rem;
     color: var(--ftp-white);
     margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+.ftp-contact-card:hover .ftp-contact-title {
+    color: var(--ftp-primary-red);
 }
 
 .ftp-contact-number {
@@ -792,6 +1105,7 @@
     color: var(--ftp-primary-red);
     margin-bottom: 20px;
     font-weight: 600;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
 }
 
 .ftp-contact-address,

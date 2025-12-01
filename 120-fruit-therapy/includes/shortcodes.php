@@ -110,9 +110,13 @@ function ftp_hero_shortcode() {
 
 /**
  * Menu section shortcode (preview)
+ * Shows category cards with image placeholders, title and description only
  */
 function ftp_menu_section_shortcode() {
     $menu_items = ftp_get_menu_items();
+    $settings = get_option('ftp_settings', array());
+    $category_images = isset($settings['category_images']) ? $settings['category_images'] : array();
+    $menu_page_url = ftp_get_menu_page_url();
     ob_start();
     ?>
     <section class="ftp-menu-section ftp-section" id="ftp-menu">
@@ -122,22 +126,27 @@ function ftp_menu_section_shortcode() {
                 <p class="ftp-section-subtitle">Hygienically prepared fresh fruits crafted into delicious and nutritious creations for your wellness journey</p>
             </div>
             <div class="ftp-menu-grid">
-                <?php foreach ($menu_items as $key => $category) : ?>
-                <div class="ftp-menu-card ftp-fade-in-up">
-                    <div class="ftp-menu-card-icon"><?php echo esc_html($category['icon']); ?></div>
-                    <h3 class="ftp-menu-card-title"><?php echo esc_html($category['title']); ?></h3>
-                    <p class="ftp-menu-card-desc"><?php echo esc_html($category['description']); ?></p>
-                    <div class="ftp-menu-card-price">
-                        <?php 
-                        $prices = array_column($category['items'], 'price');
-                        echo esc_html($prices[0] . ' - ' . end($prices));
-                        ?>
+                <?php foreach ($menu_items as $key => $category) : 
+                    $image_url = isset($category_images[$key]) && !empty($category_images[$key]) ? $category_images[$key] : '';
+                ?>
+                <div class="ftp-menu-card ftp-fade-in-up" data-category="<?php echo esc_attr($key); ?>">
+                    <div class="ftp-menu-card-image" <?php if ($image_url) : ?>style="background-image: url('<?php echo esc_url($image_url); ?>');"<?php endif; ?>>
+                        <?php if (!$image_url) : ?>
+                        <div class="ftp-menu-card-placeholder">
+                            <span class="ftp-placeholder-icon"><?php echo esc_html($category['icon']); ?></span>
+                        </div>
+                        <?php endif; ?>
+                        <div class="ftp-menu-card-overlay"></div>
+                    </div>
+                    <div class="ftp-menu-card-content">
+                        <h3 class="ftp-menu-card-title"><?php echo esc_html($category['title']); ?></h3>
+                        <p class="ftp-menu-card-desc"><?php echo esc_html($category['description']); ?></p>
                     </div>
                 </div>
                 <?php endforeach; ?>
             </div>
             <div class="ftp-section-cta ftp-fade-in-up">
-                <a href="#ftp-menu-full" class="ftp-btn ftp-btn-primary ftp-btn-large">View Full Menu</a>
+                <a href="<?php echo esc_url($menu_page_url); ?>" class="ftp-btn ftp-btn-primary ftp-btn-large">View Full Menu</a>
             </div>
         </div>
     </section>
@@ -490,10 +499,10 @@ function ftp_footer_shortcode() {
         </div>
     </footer>
     
-    <!-- Floating Support Button -->
+    <!-- Floating Support Button - Links to Menu Page -->
     <div class="ftp-floating-support" id="ftp-floating-support">
         <div class="ftp-support-popup">Place your orders here</div>
-        <a href="#ftp-menu" class="ftp-support-btn">
+        <a href="<?php echo esc_url(ftp_get_menu_page_url()); ?>" class="ftp-support-btn">
             <span class="ftp-support-icon">🛒</span>
         </a>
     </div>
