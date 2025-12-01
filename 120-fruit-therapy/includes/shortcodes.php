@@ -43,6 +43,7 @@ function ftp_landing_page_shortcode() {
  * Header shortcode
  */
 function ftp_header_shortcode() {
+    $whatsapp_order_url = ftp_whatsapp_url(ftp_get_order_phone(), "Hello 120 Fruit Therapy! I would like to place an order. Please assist me with your menu options.");
     ob_start();
     ?>
     <header class="ftp-header" id="ftp-header">
@@ -50,7 +51,6 @@ function ftp_header_shortcode() {
             <div class="ftp-logo">
                 <a href="#ftp-hero">
                     <img src="<?php echo esc_url(ftp_get_logo_url()); ?>" alt="120 Fruit Therapy Place" class="ftp-logo-img">
-                    <span class="ftp-logo-text">120 Fruit Therapy Place</span>
                 </a>
             </div>
             <button class="ftp-mobile-menu-toggle" aria-label="Toggle menu">
@@ -65,6 +65,7 @@ function ftp_header_shortcode() {
                     <li><a href="#ftp-events" class="ftp-nav-link">Events</a></li>
                     <li><a href="#ftp-contact" class="ftp-nav-link">Contact</a></li>
                 </ul>
+                <a href="<?php echo esc_url($whatsapp_order_url); ?>" class="ftp-header-cta" target="_blank" rel="noopener">Order Now</a>
             </nav>
         </div>
     </header>

@@ -81,15 +81,40 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
-    padding: 15px 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.85));
+    padding: 10px 0;
     transition: var(--ftp-transition);
+    overflow: hidden;
+}
+
+/* Lighting hue animation background */
+.ftp-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 0, 0, 0.03), 
+        rgba(255, 0, 0, 0.08), 
+        rgba(255, 0, 0, 0.03), 
+        transparent);
+    animation: ftp-header-glow 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes ftp-header-glow {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(50%); }
 }
 
 .ftp-header.scrolled {
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 0.98);
     backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(255, 0, 0, 0.1);
+    box-shadow: 0 2px 30px rgba(255, 0, 0, 0.15);
+    padding: 8px 0;
 }
 
 .ftp-header-container {
@@ -109,8 +134,13 @@
 }
 
 .ftp-logo-img {
-    height: 50px;
+    height: 35px;
     width: auto;
+    transition: var(--ftp-transition);
+}
+
+.ftp-header.scrolled .ftp-logo-img {
+    height: 30px;
 }
 
 .ftp-logo-text {
@@ -123,13 +153,42 @@
 .ftp-nav-list {
     display: flex;
     list-style: none;
-    gap: 30px;
+    gap: 25px;
+}
+
+.ftp-nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.ftp-header-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 20px;
+    background: var(--ftp-primary-red);
+    color: var(--ftp-white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+}
+
+.ftp-header-cta:hover {
+    background: var(--ftp-white);
+    color: var(--ftp-primary-red);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
 }
 
 .ftp-nav-link {
     color: var(--ftp-white);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -1163,26 +1222,44 @@
 
 /* ===================== FOOTER ===================== */
 .ftp-footer {
-    background: var(--ftp-black);
-    padding: 60px 0 30px;
-    border-top: 1px solid rgba(255, 0, 0, 0.2);
+    background: linear-gradient(180deg, var(--ftp-dark-burgundy) 0%, var(--ftp-black) 100%);
+    padding: 50px 0 25px;
+    border-top: 2px solid var(--ftp-primary-red);
+    position: relative;
+    overflow: hidden;
+}
+
+.ftp-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--ftp-primary-red), transparent);
+    animation: ftp-footer-glow 3s ease-in-out infinite;
+}
+
+@keyframes ftp-footer-glow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
 }
 
 .ftp-footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px;
-    margin-bottom: 40px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 30px;
 }
 
 .ftp-footer-brand {
-    text-align: center;
+    text-align: left;
 }
 
 .ftp-footer-logo {
-    height: 80px;
+    height: 50px;
     width: auto;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .ftp-footer-tagline {
@@ -1267,13 +1344,18 @@
     padding: 12px 20px;
     border-radius: 10px;
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 600;
     white-space: nowrap;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    transform: translateY(10px);
-    transition: var(--ftp-transition);
-    pointer-events: none;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    /* Always visible - not hidden */
+    opacity: 1;
+    transform: translateY(0);
+    animation: ftp-popup-bounce 3s ease-in-out infinite;
+}
+
+@keyframes ftp-popup-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
 }
 
 .ftp-support-popup::after {
@@ -1284,11 +1366,6 @@
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-top: 8px solid var(--ftp-white);
-}
-
-.ftp-floating-support:hover .ftp-support-popup {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .ftp-support-btn {
@@ -1341,6 +1418,18 @@
     .ftp-events-grid {
         grid-template-columns: 1fr;
     }
+    
+    .ftp-footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .ftp-nav-list {
+        gap: 15px;
+    }
+    
+    .ftp-nav-link {
+        font-size: 0.8rem;
+    }
 }
 
 /* Mobile */
@@ -1359,6 +1448,7 @@
         background: rgba(0, 0, 0, 0.98);
         padding: 80px 30px 30px;
         transition: var(--ftp-transition);
+        flex-direction: column;
     }
     
     .ftp-nav.active {
@@ -1368,6 +1458,25 @@
     .ftp-nav-list {
         flex-direction: column;
         gap: 20px;
+    }
+    
+    .ftp-header-cta {
+        margin-top: 20px;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .ftp-footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .ftp-footer-brand {
+        text-align: center;
+    }
+    
+    .ftp-social-links {
+        justify-content: center;
     }
     
     .ftp-nav-link {
@@ -1468,4 +1577,23 @@
 /* Smooth scroll behavior */
 html {
     scroll-behavior: smooth;
+}
+
+/* Accessibility: Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .ftp-header::before,
+    .ftp-footer::before,
+    .ftp-support-popup,
+    .ftp-support-btn,
+    .ftp-floating-fruit,
+    .ftp-offer-badge,
+    .ftp-package-card::before,
+    .ftp-plan-card::before,
+    .ftp-offer-card::before {
+        animation: none;
+    }
+    
+    * {
+        transition-duration: 0.01ms !important;
+    }
 }

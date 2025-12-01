@@ -46,9 +46,6 @@ $menu_items = ftp_get_menu_items();
                 <div class="ftp-menu-items-grid">
                     <?php foreach ($category['items'] as $item) : ?>
                     <div class="ftp-menu-item-card ftp-fade-in-up">
-                        <div class="ftp-menu-item-image">
-                            <?php echo esc_html($category['icon']); ?>
-                        </div>
                         <div class="ftp-menu-item-content">
                             <div class="ftp-menu-item-header">
                                 <h3 class="ftp-menu-item-name"><?php echo esc_html($item['name']); ?></h3>
