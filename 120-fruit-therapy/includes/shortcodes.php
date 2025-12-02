@@ -52,9 +52,7 @@ function ftp_header_shortcode() {
     <header class="ftp-header" id="ftp-header">
         <div class="ftp-header-container">
             <div class="ftp-logo">
-                <a href="<?php echo esc_url($home_url); ?>">
-                    <img src="<?php echo esc_url(ftp_get_logo_url()); ?>" alt="120 Fruit Therapy Place" class="ftp-logo-img">
-                </a>
+                <a href="<?php echo esc_url($home_url); ?>" class="ftp-logo-text">120</a>
             </div>
             <button class="ftp-mobile-menu-toggle" aria-label="Toggle menu">
                 <span class="ftp-hamburger"></span>
@@ -488,7 +486,7 @@ function ftp_footer_shortcode() {
         <div class="ftp-container">
             <div class="ftp-footer-grid">
                 <div class="ftp-footer-brand">
-                    <img src="<?php echo esc_url(ftp_get_logo_url()); ?>" alt="120 Fruit Therapy Place" class="ftp-footer-logo">
+                    <span class="ftp-footer-logo-text">120</span>
                     <p class="ftp-footer-tagline">Health &amp; Wellness Through Fresh Fruits</p>
                 </div>
                 <div class="ftp-footer-links">
