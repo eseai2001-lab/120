@@ -69,6 +69,7 @@ function ftp_get_special_plans_page_url() {
 
 /**
  * Get menu items data
+ * Updated with actual menu items from 120Menu images
  */
 function ftp_get_menu_items() {
     return array(
@@ -77,9 +78,10 @@ function ftp_get_menu_items() {
             'icon' => '🥗',
             'description' => 'Fresh seasonal fruits, carefully selected and hygienically prepared with natural dressings and superfoods',
             'items' => array(
-                array('name' => 'Mixed Fruit Salad', 'price' => '₦2,500', 'description' => 'A delicious blend of seasonal fruits'),
-                array('name' => 'Tropical Paradise', 'price' => '₦3,000', 'description' => 'Exotic tropical fruits with coconut'),
-                array('name' => 'Berry Bliss', 'price' => '₦3,500', 'description' => 'Mixed berries with honey drizzle'),
+                array('name' => 'Fruit Salad Small', 'price' => '₦2,000', 'description' => 'Small portion of fresh mixed fruits'),
+                array('name' => 'Fruit Salad Medium', 'price' => '₦3,000', 'description' => 'Medium portion of fresh mixed fruits'),
+                array('name' => 'Fruit Salad Large', 'price' => '₦5,000', 'description' => 'Large portion of fresh mixed fruits'),
+                array('name' => 'Fruit Salad Family', 'price' => '₦8,000', 'description' => 'Family size portion of fresh mixed fruits'),
             )
         ),
         'smoothies' => array(
@@ -87,9 +89,12 @@ function ftp_get_menu_items() {
             'icon' => '🥤',
             'description' => 'Nutrient-packed smoothies with fresh fruits, superfoods, and natural supplements for optimal health',
             'items' => array(
-                array('name' => 'Green Detox', 'price' => '₦2,000', 'description' => 'Spinach, apple, ginger blend'),
-                array('name' => 'Mango Tango', 'price' => '₦2,500', 'description' => 'Fresh mango with yogurt'),
-                array('name' => 'Berry Blast', 'price' => '₦2,500', 'description' => 'Mixed berries smoothie'),
+                array('name' => 'Banana Smoothie', 'price' => '₦1,500', 'description' => 'Creamy banana smoothie'),
+                array('name' => 'Mango Smoothie', 'price' => '₦2,000', 'description' => 'Fresh mango smoothie'),
+                array('name' => 'Strawberry Smoothie', 'price' => '₦2,500', 'description' => 'Fresh strawberry smoothie'),
+                array('name' => 'Mixed Berry Smoothie', 'price' => '₦3,000', 'description' => 'Blend of fresh berries'),
+                array('name' => 'Green Detox Smoothie', 'price' => '₦2,500', 'description' => 'Spinach, apple, ginger blend'),
+                array('name' => 'Tropical Smoothie', 'price' => '₦2,500', 'description' => 'Tropical fruit blend'),
             )
         ),
         'parfaits' => array(
@@ -100,16 +105,21 @@ function ftp_get_menu_items() {
                 array('name' => 'Classic Parfait', 'price' => '₦3,000', 'description' => 'Yogurt, fruits, and granola'),
                 array('name' => 'Granola Parfait', 'price' => '₦3,500', 'description' => 'Extra granola with honey'),
                 array('name' => 'Protein Parfait', 'price' => '₦4,000', 'description' => 'High protein with nuts'),
+                array('name' => 'Berry Parfait', 'price' => '₦4,000', 'description' => 'Mixed berries with yogurt'),
+                array('name' => 'Tropical Parfait', 'price' => '₦4,500', 'description' => 'Tropical fruits with coconut'),
             )
         ),
         'fruit_juices' => array(
-            'title' => 'Fruit Juices',
+            'title' => 'Fresh Juices',
             'icon' => '🧃',
             'description' => 'Freshly squeezed fruit juices with no added sugar',
             'items' => array(
-                array('name' => 'Fresh Orange', 'price' => '₦1,500', 'description' => 'Pure orange juice'),
-                array('name' => 'Pineapple Punch', 'price' => '₦1,800', 'description' => 'Pineapple with mint'),
-                array('name' => 'Watermelon Refresh', 'price' => '₦1,500', 'description' => 'Cool watermelon juice'),
+                array('name' => 'Orange Juice', 'price' => '₦1,000', 'description' => 'Fresh squeezed orange'),
+                array('name' => 'Pineapple Juice', 'price' => '₦1,000', 'description' => 'Fresh pineapple juice'),
+                array('name' => 'Watermelon Juice', 'price' => '₦1,000', 'description' => 'Cool watermelon juice'),
+                array('name' => 'Apple Juice', 'price' => '₦1,200', 'description' => 'Fresh apple juice'),
+                array('name' => 'Carrot Juice', 'price' => '₦1,000', 'description' => 'Fresh carrot juice'),
+                array('name' => 'Mixed Juice', 'price' => '₦1,500', 'description' => 'Blend of fresh fruits'),
             )
         ),
         'mocktails' => array(
@@ -118,8 +128,10 @@ function ftp_get_menu_items() {
             'description' => 'Refreshing fruit-based mocktails with natural ingredients, herbs, and therapeutic benefits',
             'items' => array(
                 array('name' => 'Virgin Mojito', 'price' => '₦2,500', 'description' => 'Lime, mint, and soda'),
-                array('name' => 'Sunset Breeze', 'price' => '₦2,800', 'description' => 'Orange and passion fruit'),
-                array('name' => 'Tropical Storm', 'price' => '₦3,000', 'description' => 'Mixed tropical blend'),
+                array('name' => 'Pina Colada', 'price' => '₦3,000', 'description' => 'Pineapple and coconut'),
+                array('name' => 'Strawberry Daiquiri', 'price' => '₦3,000', 'description' => 'Strawberry blend'),
+                array('name' => 'Tropical Sunset', 'price' => '₦3,500', 'description' => 'Tropical fruit medley'),
+                array('name' => 'Berry Blast', 'price' => '₦3,000', 'description' => 'Mixed berry mocktail'),
             )
         ),
         'milkshakes' => array(
@@ -127,48 +139,56 @@ function ftp_get_menu_items() {
             'icon' => '🥛',
             'description' => 'Creamy milkshakes made with fresh fruits and premium ice cream',
             'items' => array(
-                array('name' => 'Strawberry Dream', 'price' => '₦2,500', 'description' => 'Fresh strawberry shake'),
-                array('name' => 'Chocolate Banana', 'price' => '₦2,800', 'description' => 'Rich chocolate and banana'),
-                array('name' => 'Vanilla Berry', 'price' => '₦2,500', 'description' => 'Vanilla with mixed berries'),
+                array('name' => 'Vanilla Milkshake', 'price' => '₦2,000', 'description' => 'Classic vanilla shake'),
+                array('name' => 'Chocolate Milkshake', 'price' => '₦2,500', 'description' => 'Rich chocolate shake'),
+                array('name' => 'Strawberry Milkshake', 'price' => '₦2,500', 'description' => 'Fresh strawberry shake'),
+                array('name' => 'Banana Milkshake', 'price' => '₦2,000', 'description' => 'Creamy banana shake'),
+                array('name' => 'Oreo Milkshake', 'price' => '₦3,000', 'description' => 'Oreo cookie shake'),
             )
         ),
-        'tigernut_milk' => array(
-            'title' => 'Tigernut Milk',
+        'tigernut_drinks' => array(
+            'title' => 'Tigernut Drinks (Kunu Aya)',
             'icon' => '🥜',
             'description' => 'Traditional Nigerian tigernut drinks with health benefits',
             'items' => array(
-                array('name' => 'Classic Tigernut', 'price' => '₦2,000', 'description' => 'Pure tigernut milk'),
-                array('name' => 'Spiced Tigernut', 'price' => '₦2,500', 'description' => 'With dates and ginger'),
-                array('name' => 'Tigernut Smoothie', 'price' => '₦3,000', 'description' => 'Blended with fruits'),
+                array('name' => 'Plain Tigernut', 'price' => '₦1,000', 'description' => 'Pure tigernut milk'),
+                array('name' => 'Tigernut with Dates', 'price' => '₦1,500', 'description' => 'Sweetened with dates'),
+                array('name' => 'Tigernut with Coconut', 'price' => '₦1,500', 'description' => 'With coconut flavor'),
+                array('name' => 'Spiced Tigernut', 'price' => '₦1,500', 'description' => 'With ginger and spices'),
             )
         ),
-        'fruit_cakes' => array(
-            'title' => 'Fruit Cakes',
-            'icon' => '🎂',
-            'description' => 'Delicious cakes topped with fresh seasonal fruits',
+        'yogurt_bowls' => array(
+            'title' => 'Yogurt Bowls',
+            'icon' => '🥣',
+            'description' => 'Healthy yogurt bowls topped with fresh fruits and granola',
             'items' => array(
-                array('name' => 'Fruit Cake Slice', 'price' => '₦2,000', 'description' => 'Single serving slice'),
-                array('name' => 'Whole Fruit Cake', 'price' => '₦15,000', 'description' => 'Full cake for parties'),
+                array('name' => 'Plain Yogurt Bowl', 'price' => '₦2,000', 'description' => 'Greek yogurt with toppings'),
+                array('name' => 'Fruit Yogurt Bowl', 'price' => '₦2,500', 'description' => 'Yogurt with fresh fruits'),
+                array('name' => 'Granola Yogurt Bowl', 'price' => '₦3,000', 'description' => 'Yogurt with granola and honey'),
+                array('name' => 'Acai Bowl', 'price' => '₦4,000', 'description' => 'Acai berry bowl with toppings'),
             )
         ),
-        'frappuccinos' => array(
-            'title' => 'Frappuccinos',
-            'icon' => '☕',
-            'description' => 'Blended iced coffee drinks with fruit flavors',
+        'fresh_fruits' => array(
+            'title' => 'Fresh Cut Fruits',
+            'icon' => '🍓',
+            'description' => 'Freshly cut seasonal fruits ready to enjoy',
             'items' => array(
-                array('name' => 'Caramel Frappe', 'price' => '₦3,000', 'description' => 'Caramel coffee blend'),
-                array('name' => 'Mocha Frappe', 'price' => '₦3,000', 'description' => 'Chocolate coffee blend'),
-                array('name' => 'Vanilla Frappe', 'price' => '₦2,800', 'description' => 'Vanilla coffee blend'),
+                array('name' => 'Watermelon Cup', 'price' => '₦500', 'description' => 'Fresh cut watermelon'),
+                array('name' => 'Pineapple Cup', 'price' => '₦500', 'description' => 'Fresh cut pineapple'),
+                array('name' => 'Pawpaw Cup', 'price' => '₦500', 'description' => 'Fresh cut pawpaw'),
+                array('name' => 'Mixed Fruit Cup', 'price' => '₦1,000', 'description' => 'Assorted fresh fruits'),
             )
         ),
-        'slushies' => array(
-            'title' => 'Slushies',
-            'icon' => '🧊',
-            'description' => 'Refreshing frozen fruit drinks perfect for hot days',
+        'special_drinks' => array(
+            'title' => 'Special Drinks',
+            'icon' => '🍵',
+            'description' => 'Special healthy drinks and beverages',
             'items' => array(
-                array('name' => 'Blue Lagoon', 'price' => '₦2,000', 'description' => 'Blue curacao flavored'),
-                array('name' => 'Strawberry Slush', 'price' => '₦2,000', 'description' => 'Strawberry ice blend'),
-                array('name' => 'Mango Slush', 'price' => '₦2,000', 'description' => 'Mango ice blend'),
+                array('name' => 'Zobo Drink', 'price' => '₦500', 'description' => 'Traditional hibiscus drink'),
+                array('name' => 'Ginger Shot', 'price' => '₦500', 'description' => 'Concentrated ginger wellness shot'),
+                array('name' => 'Lemon Ginger', 'price' => '₦800', 'description' => 'Lemon and ginger blend'),
+                array('name' => 'Detox Water', 'price' => '₦800', 'description' => 'Infused detox water'),
+                array('name' => 'Green Juice', 'price' => '₦1,500', 'description' => 'Vegetable and fruit blend'),
             )
         ),
     );
@@ -176,11 +196,12 @@ function ftp_get_menu_items() {
 
 /**
  * Get special wellness plans data
+ * Updated with actual plans from 120Menu images
  */
 function ftp_get_special_plans() {
     return array(
         array(
-            'name' => 'Weight Loss',
+            'name' => 'Weight Loss Plan',
             'icon' => '🍎',
             'description' => 'Carefully crafted fruit combinations designed to boost metabolism, reduce cravings, and support healthy weight management.',
             'plans' => array(
@@ -190,7 +211,7 @@ function ftp_get_special_plans() {
             )
         ),
         array(
-            'name' => 'Weight Gain',
+            'name' => 'Weight Gain Plan',
             'icon' => '💪',
             'description' => 'Nutrient-dense fruit plans with healthy calories to support muscle growth and healthy weight gain.',
             'plans' => array(
@@ -200,7 +221,7 @@ function ftp_get_special_plans() {
             )
         ),
         array(
-            'name' => 'Clear Skin + Glow',
+            'name' => 'Clear Skin & Glow Plan',
             'icon' => '✨',
             'description' => 'Antioxidant-rich fruits that nourish your skin from within for a natural, healthy glow.',
             'plans' => array(
@@ -210,7 +231,7 @@ function ftp_get_special_plans() {
             )
         ),
         array(
-            'name' => 'Libido',
+            'name' => 'Libido Enhancement Plan',
             'icon' => '❤️',
             'description' => 'Natural aphrodisiac fruits to enhance vitality and intimate wellness.',
             'plans' => array(
@@ -219,7 +240,7 @@ function ftp_get_special_plans() {
             )
         ),
         array(
-            'name' => 'Energy Boost',
+            'name' => 'Energy Boost Plan',
             'icon' => '⚡',
             'description' => 'High-energy fruit combinations to keep you active and energized throughout the day.',
             'plans' => array(
@@ -228,40 +249,59 @@ function ftp_get_special_plans() {
             )
         ),
         array(
-            'name' => 'Stress Relief',
+            'name' => 'Stress Relief Plan',
             'icon' => '🧘',
-            'description' => 'Calming fruit blends with natural stress-reducing properties to help you relax.',
+            'description' => 'Calming fruit blends with natural stress-reducing properties to help you relax and unwind.',
             'plans' => array(
                 array('duration' => '7 Days', 'price' => '₦20,000'),
                 array('duration' => '14 Days', 'price' => '₦35,000'),
             )
         ),
         array(
-            'name' => 'Focus',
+            'name' => 'Mental Focus Plan',
             'icon' => '🎯',
-            'description' => 'Brain-boosting fruits to enhance concentration, memory, and mental clarity.',
+            'description' => 'Brain-boosting fruits to enhance concentration, memory, and mental clarity for peak performance.',
             'plans' => array(
                 array('duration' => '7 Days', 'price' => '₦20,000'),
                 array('duration' => '14 Days', 'price' => '₦35,000'),
             )
         ),
         array(
-            'name' => 'Immune Function',
+            'name' => 'Immune Booster Plan',
             'icon' => '🛡️',
-            'description' => 'Vitamin-rich fruit combinations to strengthen your immune system naturally.',
+            'description' => 'Vitamin C and antioxidant-rich fruit combinations to strengthen your immune system naturally.',
             'plans' => array(
                 array('duration' => '7 Days', 'price' => '₦25,000'),
                 array('duration' => '14 Days', 'price' => '₦45,000'),
             )
         ),
         array(
-            'name' => 'Detoxification',
+            'name' => 'Detox & Cleanse Plan',
             'icon' => '🌿',
-            'description' => 'Cleansing fruit plans to flush toxins and rejuvenate your body systems.',
+            'description' => 'Cleansing fruit plans to flush toxins, improve digestion, and rejuvenate your body systems.',
             'plans' => array(
                 array('duration' => '3 Days', 'price' => '₦15,000'),
                 array('duration' => '7 Days', 'price' => '₦30,000'),
                 array('duration' => '14 Days', 'price' => '₦55,000'),
+            )
+        ),
+        array(
+            'name' => 'Fertility Support Plan',
+            'icon' => '🌸',
+            'description' => 'Specially curated fruits rich in folate and essential nutrients to support reproductive health.',
+            'plans' => array(
+                array('duration' => '14 Days', 'price' => '₦40,000'),
+                array('duration' => '30 Days', 'price' => '₦75,000'),
+            )
+        ),
+        array(
+            'name' => 'Diabetes Management Plan',
+            'icon' => '🍇',
+            'description' => 'Low glycemic fruits carefully selected to help manage blood sugar levels naturally.',
+            'plans' => array(
+                array('duration' => '7 Days', 'price' => '₦25,000'),
+                array('duration' => '14 Days', 'price' => '₦45,000'),
+                array('duration' => '30 Days', 'price' => '₦80,000'),
             )
         ),
     );
