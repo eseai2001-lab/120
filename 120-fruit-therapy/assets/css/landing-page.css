@@ -223,40 +223,62 @@
     animation: ftp-logo-sparkle 2s ease-in-out infinite;
 }
 
-/* Straw inside the 0 */
+/* Straw inside the 0 - positioned like it's inside a cup */
 .ftp-logo-straw {
     position: absolute;
-    top: -8px;
+    top: 2px;
     left: 50%;
-    transform: translateX(-50%) rotate(-15deg);
-    width: 4px;
-    height: 22px;
+    transform: translateX(-50%) rotate(-20deg);
+    width: 3px;
+    height: 28px;
     background: linear-gradient(180deg, 
         #FFD700 0%, 
-        #FFEC8B 20%, 
-        #FFD700 40%, 
-        #DAA520 60%,
-        #FFD700 80%,
-        #FFEC8B 100%);
-    border-radius: 2px;
+        #FFEC8B 15%, 
+        #FFD700 30%, 
+        #DAA520 50%,
+        #FFD700 70%,
+        #FFEC8B 85%,
+        #FFD700 100%);
+    border-radius: 1.5px;
     box-shadow: 
         0 0 8px rgba(255, 215, 0, 0.8),
         0 0 15px rgba(255, 215, 0, 0.5),
         0 0 25px rgba(255, 215, 0, 0.3);
     animation: ftp-straw-glow 1.5s ease-in-out infinite alternate;
+    z-index: 2;
+    transform-origin: bottom center;
 }
 
+/* Straw tip - bent at the top */
 .ftp-logo-straw::before {
     content: '';
     position: absolute;
-    top: -4px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: -8px;
+    left: -1px;
+    width: 3px;
+    height: 10px;
+    background: linear-gradient(180deg, #FFEC8B, #FFD700);
+    border-radius: 1.5px;
+    transform: rotate(25deg);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 1);
+}
+
+/* Sparkle effect at straw tip */
+.ftp-logo-straw::after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: -2px;
     width: 6px;
     height: 6px;
-    background: linear-gradient(135deg, #FFD700, #FFEC8B);
+    background: radial-gradient(circle, #FFFFFF 0%, #FFD700 50%, transparent 70%);
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 1);
+    animation: ftp-straw-sparkle 1s ease-in-out infinite;
+}
+
+@keyframes ftp-straw-sparkle {
+    0%, 100% { opacity: 0.6; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
 }
 
 @keyframes ftp-straw-glow {
@@ -1821,8 +1843,8 @@
 }
 
 .ftp-footer-logo .ftp-logo-straw {
-    top: -10px;
-    height: 28px;
+    top: 4px;
+    height: 32px;
 }
 
 /* ===================== SECTION PROGRESS BAR ===================== */
@@ -1994,11 +2016,11 @@
 
 .ftp-order-straw {
     position: absolute;
-    top: -5px;
+    top: 1px;
     left: 50%;
-    transform: translateX(-50%) rotate(-15deg);
-    width: 3px;
-    height: 14px;
+    transform: translateX(-50%) rotate(-20deg);
+    width: 2px;
+    height: 16px;
     background: linear-gradient(180deg, 
         #FFD700 0%, 
         #FFEC8B 30%, 
@@ -2007,19 +2029,33 @@
     border-radius: 1px;
     box-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
     animation: ftp-straw-glow 1.5s ease-in-out infinite alternate;
+    z-index: 2;
+    transform-origin: bottom center;
 }
 
 .ftp-order-straw::before {
     content: '';
     position: absolute;
-    top: -3px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: -5px;
+    left: -1px;
+    width: 2px;
+    height: 6px;
+    background: linear-gradient(180deg, #FFEC8B, #FFD700);
+    border-radius: 1px;
+    transform: rotate(25deg);
+    box-shadow: 0 0 5px rgba(255, 215, 0, 1);
+}
+
+.ftp-order-straw::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -1px;
     width: 4px;
     height: 4px;
-    background: #FFD700;
+    background: radial-gradient(circle, #FFFFFF 0%, #FFD700 50%, transparent 70%);
     border-radius: 50%;
-    box-shadow: 0 0 5px rgba(255, 215, 0, 1);
+    animation: ftp-straw-sparkle 1s ease-in-out infinite;
 }
 
 .ftp-support-icon {
