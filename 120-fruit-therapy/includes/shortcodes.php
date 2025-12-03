@@ -601,17 +601,14 @@ function ftp_footer_shortcode() {
         <div class="ftp-section-hint" id="ftp-section-hint"></div>
     </div>
     
-    <!-- Floating Order Button - iPhone Design -->
+    <!-- Floating Order Button - Chat Icon -->
     <div class="ftp-floating-support" id="ftp-floating-support">
-        <div class="ftp-support-popup">Place Orders Here</div>
+        <div class="ftp-support-popup">Place Order</div>
         <a href="<?php echo esc_url(ftp_get_menu_page_url()); ?>" class="ftp-support-btn">
-            <div class="ftp-iphone-screen">
-                <div class="ftp-iphone-logo">
-                    <span class="ftp-iphone-logo-text">12</span><span class="ftp-iphone-logo-zero">0<span class="ftp-iphone-straw"></span></span>
-                </div>
-                <span class="ftp-iphone-order-text">Place Order</span>
-            </div>
-            <div class="ftp-iphone-home"></div>
+            <svg class="ftp-chat-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 11.5C21 16.75 16.75 21 11.5 21C9.8 21 8.2 20.6 6.8 19.9L3 21L4.1 17.2C3.4 15.8 3 14.2 3 12.5C3 7.25 7.25 3 12.5 3C17.75 3 22 7.25 22 12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8 10H16M8 14H12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
         </a>
     </div>
     <?php
