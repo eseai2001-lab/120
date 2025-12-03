@@ -225,8 +225,6 @@ function ftp_special_plans_section_shortcode() {
  */
 function ftp_special_plan_menu_section_shortcode() {
     $plan_categories = ftp_get_special_plan_categories();
-    $settings = get_option('ftp_settings', array());
-    $plan_images = isset($settings['special_plan_menu_images']) ? $settings['special_plan_menu_images'] : array();
     $special_plan_menu_url = ftp_get_special_plan_menu_page_url();
     ob_start();
     ?>
@@ -239,7 +237,7 @@ function ftp_special_plan_menu_section_shortcode() {
             <div class="ftp-plans-preview">
                 <div class="ftp-plans-grid">
                     <?php foreach ($plan_categories as $key => $category) : 
-                        $image_url = isset($plan_images[$key]) && !empty($plan_images[$key]) ? $plan_images[$key] : '';
+                        $image_url = ftp_get_special_plan_menu_image($key);
                     ?>
                     <div class="ftp-plan-card ftp-fade-in-up">
                         <div class="ftp-plan-card-image" <?php if ($image_url) : ?>style="background-image: url('<?php echo esc_url($image_url); ?>');"<?php endif; ?>>

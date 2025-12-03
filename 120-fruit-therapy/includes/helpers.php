@@ -78,6 +78,20 @@ function ftp_get_special_plan_menu_page_url() {
 }
 
 /**
+ * Get special plan menu image URL for a specific category
+ * 
+ * @param string $category_key The category key (e.g., 'weight_loss', 'weight_gain', 'libido', 'weight_maintenance')
+ * @return string Image URL or empty string
+ */
+function ftp_get_special_plan_menu_image($category_key) {
+    $settings = get_option('ftp_settings', array());
+    if (isset($settings['special_plan_menu_images']) && isset($settings['special_plan_menu_images'][$category_key])) {
+        return $settings['special_plan_menu_images'][$category_key];
+    }
+    return '';
+}
+
+/**
  * Get menu items data
  * Updated with actual menu items from 120 Fruit Therapy Place
  */
