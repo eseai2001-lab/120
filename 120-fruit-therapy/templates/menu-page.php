@@ -67,11 +67,11 @@ $menu_items = ftp_get_menu_items();
             
             <!-- Call to Action -->
             <div class="ftp-section-cta ftp-fade-in-up">
-                <h3 style="color: var(--ftp-white); margin-bottom: 20px;">Can't find what you're looking for?</h3>
-                <p style="color: var(--ftp-text-muted); margin-bottom: 30px;">Contact us directly and we'll help you find the perfect fruit creation!</p>
-                <?php $whatsapp_url = ftp_whatsapp_url(ftp_get_order_phone(), "Hello 120 Fruit Therapy! I would like to place a custom order. Please assist me."); ?>
+                <h3 style="color: var(--ftp-white); margin-bottom: 20px;">Swift Deliveries Within Nsukka</h3>
+                <p style="color: var(--ftp-text-muted); margin-bottom: 30px;">For swift deliveries to your location within Nsukka, you can contact us on WhatsApp</p>
+                <?php $whatsapp_url = ftp_whatsapp_url(ftp_get_order_phone(), "Hello 120 Fruit Therapy! I would like to place an order for delivery within Nsukka. Please assist me."); ?>
                 <a href="<?php echo esc_url($whatsapp_url); ?>" class="ftp-btn ftp-btn-primary ftp-btn-large" target="_blank" rel="noopener">
-                    📱 Contact Us on WhatsApp
+                    Contact Us on WhatsApp
                 </a>
             </div>
         </div>
