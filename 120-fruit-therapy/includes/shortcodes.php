@@ -240,8 +240,10 @@ function ftp_special_plan_menu_section_shortcode() {
                         $image_url = ftp_get_special_plan_menu_image($key);
                     ?>
                     <div class="ftp-plan-card ftp-fade-in-up">
-                        <div class="ftp-plan-card-image" <?php if ($image_url) : ?>style="background-image: url('<?php echo esc_url($image_url); ?>');"<?php endif; ?>>
-                            <?php if (!$image_url) : ?>
+                        <div class="ftp-plan-card-image">
+                            <?php if ($image_url && !empty($image_url)) : ?>
+                            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($category['title']); ?>" class="ftp-plan-uploaded-image">
+                            <?php else : ?>
                             <div class="ftp-plan-card-placeholder">
                                 <span class="ftp-plan-placeholder-icon"><?php echo esc_html($category['icon']); ?></span>
                             </div>
