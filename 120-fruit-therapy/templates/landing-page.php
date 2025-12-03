@@ -21,7 +21,10 @@ if (!defined('ABSPATH')) {
     // Menu Section
     echo do_shortcode('[ftp_menu_section]');
     
-    // Special Plans Section
+    // Special Plan Menu Section (Weight Loss/Gain Fruit Salads & Smoothies)
+    echo do_shortcode('[ftp_special_plan_menu_section]');
+    
+    // Special Plans Section (Wellness Programs with Durations)
     echo do_shortcode('[ftp_special_plans_section]');
     
     // Gift Packages Section

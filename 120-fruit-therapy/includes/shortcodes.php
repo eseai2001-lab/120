@@ -17,6 +17,7 @@ function ftp_register_shortcodes() {
     add_shortcode('ftp_menu_section', 'ftp_menu_section_shortcode');
     add_shortcode('ftp_menu_full', 'ftp_menu_full_shortcode');
     add_shortcode('ftp_special_plans_section', 'ftp_special_plans_section_shortcode');
+    add_shortcode('ftp_special_plan_menu_section', 'ftp_special_plan_menu_section_shortcode');
     add_shortcode('ftp_special_plans_full', 'ftp_special_plans_full_shortcode');
     add_shortcode('ftp_special_plan_menu_full', 'ftp_special_plan_menu_full_shortcode');
     add_shortcode('ftp_gift_packages', 'ftp_gift_packages_shortcode');
@@ -171,17 +172,63 @@ function ftp_menu_full_shortcode() {
 }
 
 /**
- * Special plans section shortcode (preview)
- * Shows plan categories with image placeholders, title and description
+ * Special plans section shortcode (preview) - Original wellness programs
+ * Shows wellness plan categories with durations on landing page
  */
 function ftp_special_plans_section_shortcode() {
-    $plan_categories = ftp_get_special_plan_categories();
+    $plans = ftp_get_special_plans();
     $settings = get_option('ftp_settings', array());
     $plan_images = isset($settings['plan_images']) ? $settings['plan_images'] : array();
-    $special_plan_menu_url = ftp_get_special_plan_menu_page_url();
+    $special_plans_url = ftp_get_special_plans_page_url();
     ob_start();
     ?>
     <section class="ftp-special-plans-section ftp-section" id="ftp-special-plans">
+        <div class="ftp-container">
+            <div class="ftp-section-header ftp-fade-in-up">
+                <h2 class="ftp-section-title">Special Wellness Plans</h2>
+                <p class="ftp-section-subtitle">Customized therapeutic fruit plans designed by certified nutritionists to help you achieve your specific health and wellness goals</p>
+            </div>
+            <div class="ftp-plans-preview">
+                <div class="ftp-plans-grid">
+                    <?php foreach ($plans as $key => $plan) : 
+                        $plan_key = sanitize_title($plan['name']);
+                        $image_url = isset($plan_images[$plan_key]) && !empty($plan_images[$plan_key]) ? $plan_images[$plan_key] : '';
+                    ?>
+                    <div class="ftp-plan-card ftp-fade-in-up">
+                        <div class="ftp-plan-card-image" <?php if ($image_url) : ?>style="background-image: url('<?php echo esc_url($image_url); ?>');"<?php endif; ?>>
+                            <?php if (!$image_url) : ?>
+                            <div class="ftp-plan-card-placeholder">
+                                <span class="ftp-plan-placeholder-icon"><?php echo esc_html($plan['icon']); ?></span>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                        <h3 class="ftp-plan-title"><?php echo esc_html($plan['name']); ?></h3>
+                        <p class="ftp-plan-desc"><?php echo esc_html($plan['description']); ?></p>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <div class="ftp-section-cta ftp-fade-in-up">
+                <a href="<?php echo esc_url($special_plans_url); ?>" class="ftp-btn ftp-btn-primary ftp-btn-large">View Special Plans</a>
+            </div>
+        </div>
+    </section>
+    <?php
+    return ob_get_clean();
+}
+
+/**
+ * Special plan MENU section shortcode (preview) - NEW section
+ * Shows weight loss/gain fruit salads and smoothies categories
+ */
+function ftp_special_plan_menu_section_shortcode() {
+    $plan_categories = ftp_get_special_plan_categories();
+    $settings = get_option('ftp_settings', array());
+    $plan_images = isset($settings['plan_menu_images']) ? $settings['plan_menu_images'] : array();
+    $special_plan_menu_url = ftp_get_special_plan_menu_page_url();
+    ob_start();
+    ?>
+    <section class="ftp-special-plan-menu-section ftp-section" id="ftp-special-plan-menu">
         <div class="ftp-container">
             <div class="ftp-section-header ftp-fade-in-up">
                 <h2 class="ftp-section-title">Special Plan Menu</h2>
@@ -197,7 +244,7 @@ function ftp_special_plans_section_shortcode() {
                         <div class="ftp-plan-card-image" <?php if ($image_url) : ?>style="background-image: url('<?php echo esc_url($image_url); ?>');"<?php endif; ?>>
                             <?php if (!$image_url) : ?>
                             <div class="ftp-plan-card-placeholder">
-                                <span class="ftp-plan-placeholder-text"><?php echo esc_html($category['title']); ?></span>
+                                <span class="ftp-plan-placeholder-icon"><?php echo esc_html($category['icon']); ?></span>
                             </div>
                             <?php endif; ?>
                         </div>
