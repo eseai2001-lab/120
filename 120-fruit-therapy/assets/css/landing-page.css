@@ -183,10 +183,11 @@
     height: 35px;
 }
 
+/* ===================== 120 LOGO WITH STRAW ===================== */
 .ftp-logo a,
+.ftp-logo-link,
 .ftp-logo-text {
-    display: flex;
-    align-items: center;
+    display: inline;
     text-decoration: none;
     font-family: 'Georgia', serif;
     font-size: 1.8rem;
@@ -198,12 +199,82 @@
     background-clip: text;
     background-size: 200% auto;
     animation: ftp-logo-sparkle 2s ease-in-out infinite;
-    text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
     filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.5));
     transition: transform 0.3s ease;
 }
 
-.ftp-logo-text:hover {
+.ftp-logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.ftp-logo-zero {
+    position: relative;
+    display: inline-block;
+    font-family: 'Georgia', serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    font-style: italic;
+    background: linear-gradient(135deg, #FF0000 0%, #FF4444 30%, #FF0000 50%, #FFD700 70%, #FF0000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: ftp-logo-sparkle 2s ease-in-out infinite;
+}
+
+/* Straw inside the 0 */
+.ftp-logo-straw {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-15deg);
+    width: 4px;
+    height: 22px;
+    background: linear-gradient(180deg, 
+        #FFD700 0%, 
+        #FFEC8B 20%, 
+        #FFD700 40%, 
+        #DAA520 60%,
+        #FFD700 80%,
+        #FFEC8B 100%);
+    border-radius: 2px;
+    box-shadow: 
+        0 0 8px rgba(255, 215, 0, 0.8),
+        0 0 15px rgba(255, 215, 0, 0.5),
+        0 0 25px rgba(255, 215, 0, 0.3);
+    animation: ftp-straw-glow 1.5s ease-in-out infinite alternate;
+}
+
+.ftp-logo-straw::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: linear-gradient(135deg, #FFD700, #FFEC8B);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 1);
+}
+
+@keyframes ftp-straw-glow {
+    0% { 
+        box-shadow: 
+            0 0 8px rgba(255, 215, 0, 0.8),
+            0 0 15px rgba(255, 215, 0, 0.5),
+            0 0 25px rgba(255, 215, 0, 0.3);
+    }
+    100% { 
+        box-shadow: 
+            0 0 12px rgba(255, 215, 0, 1),
+            0 0 25px rgba(255, 215, 0, 0.7),
+            0 0 40px rgba(255, 215, 0, 0.5);
+    }
+}
+
+.ftp-logo-link:hover {
     transform: scale(1.05);
 }
 
@@ -1375,15 +1446,67 @@
         0 0 0 1px rgba(255, 0, 0, 0.5);
 }
 
+/* ===================== CONTACT ICONS - SPARKLING GOLD ===================== */
 .ftp-contact-icon {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.3));
-    transition: transform 0.4s ease;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.ftp-contact-icon::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 215, 0, 0.3) 50%, transparent 70%);
+    animation: ftp-icon-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes ftp-icon-shimmer {
+    0% { transform: rotate(0deg) translateX(-100%); }
+    100% { transform: rotate(360deg) translateX(100%); }
+}
+
+.ftp-contact-icon.ftp-gold-icon svg {
+    width: 32px;
+    height: 32px;
+    stroke: #FFD700;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+    animation: ftp-gold-pulse 2s ease-in-out infinite alternate;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes ftp-gold-pulse {
+    0% { 
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6)); 
+        transform: scale(1);
+    }
+    100% { 
+        filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1)); 
+        transform: scale(1.1);
+    }
 }
 
 .ftp-contact-card:hover .ftp-contact-icon {
-    transform: scale(1.2) rotate(10deg);
+    transform: scale(1.15);
+    border-color: var(--ftp-gold);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+.ftp-contact-card:hover .ftp-contact-icon.ftp-gold-icon svg {
+    stroke: #FFEC8B;
 }
 
 .ftp-contact-title {
@@ -1585,45 +1708,78 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     text-decoration: none;
-    transition: var(--ftp-transition);
-    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.ftp-social-link::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 215, 0, 0.3) 50%, transparent 70%);
+    animation: ftp-social-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes ftp-social-shimmer {
+    0% { transform: rotate(0deg) translateX(-100%); }
+    100% { transform: rotate(360deg) translateX(100%); }
 }
 
 .ftp-social-link:hover {
     transform: scale(1.2);
-    box-shadow: var(--ftp-gold-sparkle);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+    border-color: var(--ftp-gold);
 }
 
 .ftp-social-link svg {
     width: 22px;
     height: 22px;
-    fill: var(--ftp-white);
-    transition: var(--ftp-transition);
+    fill: var(--ftp-gold);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+    animation: ftp-social-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes ftp-social-pulse {
+    0% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); }
+    100% { filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.9)); }
 }
 
 .ftp-social-link:hover svg {
-    fill: var(--ftp-gold);
+    fill: #FFEC8B;
+    transform: scale(1.1);
 }
 
 .ftp-social-link.ftp-instagram:hover {
     background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    border-color: #e6683c;
 }
 
 .ftp-social-link.ftp-instagram:hover svg {
     fill: var(--ftp-white);
+    filter: none;
 }
 
 .ftp-social-link.ftp-tiktok:hover {
     background: var(--ftp-black);
-    border: 1px solid var(--ftp-white);
+    border: 2px solid var(--ftp-white);
 }
 
 .ftp-social-link.ftp-tiktok:hover svg {
     fill: var(--ftp-white);
+    filter: none;
 }
 
 .ftp-footer-bottom {
@@ -1637,7 +1793,96 @@
     font-size: 0.9rem;
 }
 
-/* ===================== FLOATING SUPPORT BUTTON ===================== */
+/* Footer icons with gold sparkle */
+.ftp-footer-icon {
+    display: inline-block;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+    animation: ftp-footer-icon-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes ftp-footer-icon-pulse {
+    0% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); }
+    100% { filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.9)); }
+}
+
+/* Footer logo with straw */
+.ftp-footer-logo {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Georgia', serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-style: italic;
+}
+
+.ftp-footer-logo .ftp-logo-text,
+.ftp-footer-logo .ftp-logo-zero {
+    font-size: 2.5rem;
+}
+
+.ftp-footer-logo .ftp-logo-straw {
+    top: -10px;
+    height: 28px;
+}
+
+/* ===================== SECTION PROGRESS BAR ===================== */
+.ftp-progress-container {
+    position: fixed;
+    top: 55px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.ftp-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, 
+        var(--ftp-primary-red) 0%, 
+        var(--ftp-gold) 50%, 
+        var(--ftp-primary-red) 100%);
+    box-shadow: 0 0 10px var(--ftp-gold), 0 0 20px var(--ftp-primary-red);
+    transition: width 0.1s ease-out;
+    animation: ftp-progress-shimmer 2s ease-in-out infinite;
+    background-size: 200% auto;
+}
+
+@keyframes ftp-progress-shimmer {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 200% center; }
+}
+
+.ftp-section-hint {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid var(--ftp-gold);
+    color: var(--ftp-white);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+    z-index: 9999;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.ftp-section-hint.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.ftp-section-hint::before {
+    content: '✨ ';
+}
+
+/* ===================== FLOATING ORDER BUTTON - 120 LOGO DESIGN ===================== */
 .ftp-floating-support {
     position: fixed;
     bottom: 30px;
@@ -1647,69 +1892,158 @@
 
 .ftp-support-popup {
     position: absolute;
-    bottom: 70px;
-    right: 0;
-    background: var(--ftp-white);
+    bottom: 85px;
+    right: 50%;
+    transform: translateX(50%);
+    background: linear-gradient(135deg, var(--ftp-gold), var(--ftp-gold-dark));
     color: var(--ftp-black);
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
     white-space: nowrap;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
-    /* Always visible - not hidden */
-    opacity: 1;
-    transform: translateY(0);
-    animation: ftp-popup-bounce 3s ease-in-out infinite;
+    box-shadow: 0 5px 25px rgba(255, 215, 0, 0.5);
+    animation: ftp-popup-bounce 2s ease-in-out infinite;
 }
 
 @keyframes ftp-popup-bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+    0%, 100% { transform: translateX(50%) translateY(0); }
+    50% { transform: translateX(50%) translateY(-8px); }
 }
 
 .ftp-support-popup::after {
     content: '';
     position: absolute;
     bottom: -8px;
-    right: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-top: 8px solid var(--ftp-white);
+    border-top: 8px solid var(--ftp-gold);
 }
 
 .ftp-support-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
-    background: var(--ftp-primary-red);
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--ftp-primary-red), #cc0000);
     border-radius: 50%;
     text-decoration: none;
-    box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
-    transition: var(--ftp-transition);
-    animation: ftp-pulse 2s infinite;
+    box-shadow: 
+        0 5px 25px rgba(255, 0, 0, 0.5),
+        0 0 0 3px rgba(255, 215, 0, 0.3);
+    transition: all 0.3s ease;
+    animation: ftp-order-pulse 2s infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.ftp-support-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 40%, rgba(255, 215, 0, 0.4) 50%, transparent 60%);
+    animation: ftp-btn-shine 3s ease-in-out infinite;
+}
+
+@keyframes ftp-btn-shine {
+    0% { transform: rotate(0deg) translateX(-100%); }
+    100% { transform: rotate(360deg) translateX(100%); }
 }
 
 .ftp-support-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.5);
+    transform: scale(1.15);
+    box-shadow: 
+        0 10px 40px rgba(255, 0, 0, 0.6),
+        0 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+/* 120 Logo in floating button */
+.ftp-support-btn.ftp-order-logo {
+    flex-direction: column;
+}
+
+.ftp-order-logo-text {
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    font-weight: 800;
+    font-style: italic;
+    color: var(--ftp-white);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.ftp-order-logo-zero {
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    font-weight: 800;
+    font-style: italic;
+    color: var(--ftp-white);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+.ftp-order-straw {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-15deg);
+    width: 3px;
+    height: 14px;
+    background: linear-gradient(180deg, 
+        #FFD700 0%, 
+        #FFEC8B 30%, 
+        #FFD700 70%,
+        #DAA520 100%);
+    border-radius: 1px;
+    box-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
+    animation: ftp-straw-glow 1.5s ease-in-out infinite alternate;
+}
+
+.ftp-order-straw::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: #FFD700;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 1);
 }
 
 .ftp-support-icon {
     font-size: 1.5rem;
 }
 
-@keyframes ftp-pulse {
+@keyframes ftp-order-pulse {
     0% {
-        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.5);
+        box-shadow: 
+            0 0 0 0 rgba(255, 0, 0, 0.5),
+            0 5px 25px rgba(255, 0, 0, 0.5),
+            0 0 0 3px rgba(255, 215, 0, 0.3);
     }
-    70% {
-        box-shadow: 0 0 0 15px rgba(255, 0, 0, 0);
+    50% {
+        box-shadow: 
+            0 0 0 15px rgba(255, 0, 0, 0),
+            0 5px 25px rgba(255, 0, 0, 0.5),
+            0 0 0 5px rgba(255, 215, 0, 0.5);
     }
     100% {
-        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+        box-shadow: 
+            0 0 0 0 rgba(255, 0, 0, 0),
+            0 5px 25px rgba(255, 0, 0, 0.5),
+            0 0 0 3px rgba(255, 215, 0, 0.3);
     }
 }
 

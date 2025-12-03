@@ -10,6 +10,10 @@
     var ticking = false;
     var header = null;
     var heroVideo = null;
+    var progressBar = null;
+    var sectionHint = null;
+    var sections = [];
+    var sectionNames = {};
 
     // Wait for DOM to be ready
     document.addEventListener('DOMContentLoaded', function() {
@@ -20,6 +24,7 @@
         initHeroVideoEffect();
         initMenuNavigation();
         initBackToTop();
+        initProgressBar();
     });
 
     /**
@@ -28,6 +33,24 @@
     function initElements() {
         header = document.getElementById('ftp-header');
         heroVideo = document.querySelector('.ftp-hero-video-container');
+        progressBar = document.getElementById('ftp-progress-bar');
+        sectionHint = document.getElementById('ftp-section-hint');
+        
+        // Get all sections and their names
+        sections = document.querySelectorAll('.ftp-section, .ftp-hero');
+        sectionNames = {
+            'ftp-hero': 'Hero',
+            'ftp-menu': 'Therapeutic Menu',
+            'ftp-special-plan-menu': 'Special Plan Menu',
+            'ftp-special-plans': 'Wellness Plans',
+            'ftp-gift-packages': 'Gift Packages',
+            'ftp-events': 'Wellness Events',
+            'ftp-offers': 'Special Offers',
+            'ftp-mission': 'Our Mission',
+            'ftp-stats': 'Our Impact',
+            'ftp-contact': 'Contact Us',
+            'ftp-map': 'Location'
+        };
     }
 
     /**
@@ -201,6 +224,82 @@
             heroVideo.style.opacity = opacity;
             heroVideo.style.transform = 'scale(' + scale + ')';
         }
+    }
+
+    /**
+     * Initialize progress bar and section hints
+     */
+    function initProgressBar() {
+        if (!progressBar) return;
+        
+        var hintTimeout = null;
+        var lastSection = null;
+        
+        window.addEventListener('scroll', function() {
+            // Update progress bar
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            var scrollPercent = (scrollTop / docHeight) * 100;
+            
+            progressBar.style.width = scrollPercent + '%';
+            
+            // Find current section
+            if (sectionHint && sections.length > 0) {
+                var currentSection = null;
+                var nextSection = null;
+                
+                sections.forEach(function(section, index) {
+                    var rect = section.getBoundingClientRect();
+                    if (rect.top <= 100 && rect.bottom > 100) {
+                        currentSection = section;
+                        if (index < sections.length - 1) {
+                            nextSection = sections[index + 1];
+                        }
+                    }
+                });
+                
+                // Show hint when entering new section
+                if (currentSection && currentSection.id && currentSection !== lastSection) {
+                    var sectionId = currentSection.id;
+                    var sectionName = sectionNames[sectionId] || sectionId.replace('ftp-', '').replace(/-/g, ' ');
+                    
+                    // Capitalize first letter of each word
+                    sectionName = sectionName.split(' ').map(function(word) {
+                        return word.charAt(0).toUpperCase() + word.slice(1);
+                    }).join(' ');
+                    
+                    // Get next section name
+                    var nextName = '';
+                    if (nextSection && nextSection.id) {
+                        nextName = sectionNames[nextSection.id] || nextSection.id.replace('ftp-', '').replace(/-/g, ' ');
+                        nextName = nextName.split(' ').map(function(word) {
+                            return word.charAt(0).toUpperCase() + word.slice(1);
+                        }).join(' ');
+                    }
+                    
+                    // Update hint text
+                    sectionHint.textContent = sectionName;
+                    if (nextName) {
+                        sectionHint.textContent += ' → ' + nextName;
+                    }
+                    
+                    // Show hint
+                    sectionHint.classList.add('visible');
+                    
+                    // Clear previous timeout
+                    if (hintTimeout) {
+                        clearTimeout(hintTimeout);
+                    }
+                    
+                    // Hide hint after 2 seconds
+                    hintTimeout = setTimeout(function() {
+                        sectionHint.classList.remove('visible');
+                    }, 2000);
+                    
+                    lastSection = currentSection;
+                }
+            }
+        });
     }
 
     /**

@@ -54,7 +54,9 @@ function ftp_header_shortcode() {
     <header class="ftp-header" id="ftp-header">
         <div class="ftp-header-container">
             <div class="ftp-logo">
-                <a href="<?php echo esc_url($home_url); ?>" class="ftp-logo-text">120</a>
+                <a href="<?php echo esc_url($home_url); ?>" class="ftp-logo-link">
+                    <span class="ftp-logo-text">12</span><span class="ftp-logo-zero">0<span class="ftp-logo-straw"></span></span>
+                </a>
             </div>
             <button class="ftp-mobile-menu-toggle" aria-label="Toggle menu">
                 <span class="ftp-hamburger"></span>
@@ -224,7 +226,7 @@ function ftp_special_plans_section_shortcode() {
 function ftp_special_plan_menu_section_shortcode() {
     $plan_categories = ftp_get_special_plan_categories();
     $settings = get_option('ftp_settings', array());
-    $plan_images = isset($settings['plan_menu_images']) ? $settings['plan_menu_images'] : array();
+    $plan_images = isset($settings['special_plan_menu_images']) ? $settings['special_plan_menu_images'] : array();
     $special_plan_menu_url = ftp_get_special_plan_menu_page_url();
     ob_start();
     ?>
@@ -237,8 +239,7 @@ function ftp_special_plan_menu_section_shortcode() {
             <div class="ftp-plans-preview">
                 <div class="ftp-plans-grid">
                     <?php foreach ($plan_categories as $key => $category) : 
-                        $plan_key = sanitize_title($category['title']);
-                        $image_url = isset($plan_images[$plan_key]) && !empty($plan_images[$plan_key]) ? $plan_images[$plan_key] : '';
+                        $image_url = isset($plan_images[$key]) && !empty($plan_images[$key]) ? $plan_images[$key] : '';
                     ?>
                     <div class="ftp-plan-card ftp-fade-in-up">
                         <div class="ftp-plan-card-image" <?php if ($image_url) : ?>style="background-image: url('<?php echo esc_url($image_url); ?>');"<?php endif; ?>>
@@ -471,19 +472,32 @@ function ftp_contact_shortcode() {
             </div>
             <div class="ftp-contact-grid">
                 <div class="ftp-contact-card ftp-fade-in-up">
-                    <div class="ftp-contact-icon">📞</div>
+                    <div class="ftp-contact-icon ftp-gold-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
                     <h3 class="ftp-contact-title">Orders &amp; Deliveries</h3>
                     <p class="ftp-contact-number"><?php echo esc_html(ftp_get_order_phone()); ?></p>
                     <a href="tel:+234<?php echo esc_attr(substr(ftp_get_order_phone(), 1)); ?>" class="ftp-btn ftp-btn-outline">Call Now</a>
                 </div>
                 <div class="ftp-contact-card ftp-fade-in-up">
-                    <div class="ftp-contact-icon">💬</div>
+                    <div class="ftp-contact-icon ftp-gold-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
                     <h3 class="ftp-contact-title">Special Plan Support</h3>
                     <p class="ftp-contact-number">+234 904 214 6929</p>
                     <a href="tel:+2349042146929" class="ftp-btn ftp-btn-outline">Call Now</a>
                 </div>
                 <div class="ftp-contact-card ftp-fade-in-up">
-                    <div class="ftp-contact-icon">📍</div>
+                    <div class="ftp-contact-icon ftp-gold-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </div>
                     <h3 class="ftp-contact-title">Visit Us</h3>
                     <p class="ftp-contact-address">Come experience our wellness sanctuary</p>
                     <p class="ftp-contact-location">University of Nigeria Nsukka, Marlima Building</p>
@@ -539,7 +553,9 @@ function ftp_footer_shortcode() {
         <div class="ftp-container">
             <div class="ftp-footer-grid">
                 <div class="ftp-footer-brand">
-                    <span class="ftp-footer-logo-text">120</span>
+                    <span class="ftp-footer-logo">
+                        <span class="ftp-logo-text">12</span><span class="ftp-logo-zero">0<span class="ftp-logo-straw"></span></span>
+                    </span>
                     <p class="ftp-footer-tagline">Health &amp; Wellness Through Fresh Fruits</p>
                 </div>
                 <div class="ftp-footer-links">
@@ -553,9 +569,9 @@ function ftp_footer_shortcode() {
                 </div>
                 <div class="ftp-footer-contact">
                     <h4>Contact</h4>
-                    <p>Orders: <?php echo esc_html(ftp_get_order_phone()); ?></p>
-                    <p>Support: <?php echo esc_html(ftp_get_support_phone()); ?></p>
-                    <p>Marlima Building, UNN, Nsukka</p>
+                    <p><span class="ftp-footer-icon">📞</span> Orders: <?php echo esc_html(ftp_get_order_phone()); ?></p>
+                    <p><span class="ftp-footer-icon">💬</span> Support: <?php echo esc_html(ftp_get_support_phone()); ?></p>
+                    <p><span class="ftp-footer-icon">📍</span> Marlima Building, UNN, Nsukka</p>
                 </div>
                 <div class="ftp-footer-social">
                     <h4>Follow Us</h4>
@@ -579,11 +595,17 @@ function ftp_footer_shortcode() {
         </div>
     </footer>
     
-    <!-- Floating Support Button - Links to Menu Page -->
+    <!-- Section Progress Indicator -->
+    <div class="ftp-progress-container" id="ftp-progress-container">
+        <div class="ftp-progress-bar" id="ftp-progress-bar"></div>
+        <div class="ftp-section-hint" id="ftp-section-hint"></div>
+    </div>
+    
+    <!-- Floating Order Button - 120 Logo Design -->
     <div class="ftp-floating-support" id="ftp-floating-support">
-        <div class="ftp-support-popup">Place your orders here</div>
-        <a href="<?php echo esc_url(ftp_get_menu_page_url()); ?>" class="ftp-support-btn">
-            <span class="ftp-support-icon">🛒</span>
+        <div class="ftp-support-popup">Place Order</div>
+        <a href="<?php echo esc_url(ftp_get_menu_page_url()); ?>" class="ftp-support-btn ftp-order-logo">
+            <span class="ftp-order-logo-text">12</span><span class="ftp-order-logo-zero">0<span class="ftp-order-straw"></span></span>
         </a>
     </div>
     <?php
