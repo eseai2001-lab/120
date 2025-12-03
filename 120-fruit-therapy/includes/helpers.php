@@ -176,116 +176,85 @@ function ftp_get_menu_items() {
 }
 
 /**
- * Get special wellness plans data
- * Updated with actual plans from 120Menu images
+ * Get special plan menu categories data for landing page preview
+ * Categories: Weight Loss, Weight Gain, Libido, Weight Maintenance
  */
-function ftp_get_special_plans() {
+function ftp_get_special_plan_categories() {
     return array(
-        array(
-            'name' => 'Weight Loss Plan',
+        'weight_loss' => array(
+            'title' => 'Weight Loss',
             'icon' => '🍎',
-            'description' => 'Carefully crafted fruit combinations designed to boost metabolism, reduce cravings, and support healthy weight management.',
-            'plans' => array(
-                array('duration' => '7 Days', 'price' => '₦25,000'),
-                array('duration' => '14 Days', 'price' => '₦45,000'),
-                array('duration' => '30 Days', 'price' => '₦80,000'),
-            )
+            'description' => 'Carefully crafted fruit salads and smoothies designed to boost metabolism and support healthy weight loss'
         ),
-        array(
-            'name' => 'Weight Gain Plan',
+        'weight_gain' => array(
+            'title' => 'Weight Gain',
             'icon' => '💪',
-            'description' => 'Nutrient-dense fruit plans with healthy calories to support muscle growth and healthy weight gain.',
-            'plans' => array(
-                array('duration' => '7 Days', 'price' => '₦25,000'),
-                array('duration' => '14 Days', 'price' => '₦45,000'),
-                array('duration' => '30 Days', 'price' => '₦80,000'),
-            )
+            'description' => 'Nutrient-dense fruit combinations with healthy calories to support muscle growth and healthy weight gain'
         ),
-        array(
-            'name' => 'Clear Skin & Glow Plan',
-            'icon' => '✨',
-            'description' => 'Antioxidant-rich fruits that nourish your skin from within for a natural, healthy glow.',
-            'plans' => array(
-                array('duration' => '7 Days', 'price' => '₦20,000'),
-                array('duration' => '14 Days', 'price' => '₦35,000'),
-                array('duration' => '30 Days', 'price' => '₦60,000'),
-            )
-        ),
-        array(
-            'name' => 'Libido Enhancement Plan',
+        'libido' => array(
+            'title' => 'Libido',
             'icon' => '❤️',
-            'description' => 'Natural aphrodisiac fruits to enhance vitality and intimate wellness.',
-            'plans' => array(
-                array('duration' => '7 Days', 'price' => '₦30,000'),
-                array('duration' => '14 Days', 'price' => '₦55,000'),
+            'description' => 'Natural aphrodisiac smoothies to enhance vitality and intimate wellness'
+        ),
+        'weight_maintenance' => array(
+            'title' => 'Weight Maintenance',
+            'icon' => '⚖️',
+            'description' => 'Balanced fruit salads and smoothies to help maintain your ideal weight naturally'
+        ),
+    );
+}
+
+/**
+ * Get special plan menu items data
+ * Updated with actual items from user-provided menu
+ */
+function ftp_get_special_plan_menu_items() {
+    return array(
+        'weight_loss' => array(
+            'title' => 'Weight Loss',
+            'icon' => '🍎',
+            'description' => 'Carefully crafted fruit salads and smoothies designed to boost metabolism and support healthy weight loss',
+            'items' => array(
+                array('name' => 'Weight Loss Fruit Salad', 'price' => '₦6,500', 'description' => 'Blueberry, Apple, Cucumber, Pawpaw, Pineapple, Watermelon, Lemon, Chia Seed, Almond, Cashew Nuts, Groundnuts (1000ml)'),
+                array('name' => 'Weight Loss Smoothie', 'price' => '₦4,500', 'description' => 'Pineapple, Ginger, Apples, Cucumber, Lemon, Chia seed (475ml)'),
             )
         ),
-        array(
-            'name' => 'Energy Boost Plan',
-            'icon' => '⚡',
-            'description' => 'High-energy fruit combinations to keep you active and energized throughout the day.',
-            'plans' => array(
-                array('duration' => '7 Days', 'price' => '₦20,000'),
-                array('duration' => '14 Days', 'price' => '₦35,000'),
+        'weight_gain' => array(
+            'title' => 'Weight Gain',
+            'icon' => '💪',
+            'description' => 'Nutrient-dense fruit combinations with healthy calories to support muscle growth and healthy weight gain',
+            'items' => array(
+                array('name' => 'Weight Gain Fruit Salad', 'price' => '₦9,500', 'description' => 'Grapes, Raisin, Dates, Egg, Banana, Coconuts, Pumpkin Seeds, Cashew Nuts, Peanuts, Condensed Milk, Evaporated Milk, Milk Powder, Honey (1000ml)'),
+                array('name' => 'Weight Gain Smoothie (Premium)', 'price' => '₦8,500', 'description' => 'Peanut Butter, Banana, Oats, Whey Protein Powder, Sunflower Seed, Dates, Milk (475ml)'),
+                array('name' => 'Weight Gain Smoothie (Standard)', 'price' => '₦6,000', 'description' => 'Banana, Oats, Greek Yoghurt, Sunflower Seed, Dates, Milk (475ml)'),
             )
         ),
-        array(
-            'name' => 'Stress Relief Plan',
-            'icon' => '🧘',
-            'description' => 'Calming fruit blends with natural stress-reducing properties to help you relax and unwind.',
-            'plans' => array(
-                array('duration' => '7 Days', 'price' => '₦20,000'),
-                array('duration' => '14 Days', 'price' => '₦35,000'),
+        'libido' => array(
+            'title' => 'Libido',
+            'icon' => '❤️',
+            'description' => 'Natural aphrodisiac smoothies to enhance vitality and intimate wellness',
+            'items' => array(
+                array('name' => 'Libido Smoothie', 'price' => '₦6,500', 'description' => 'Maca, Tigernut, Dates, Almond, Coconuts, Watermelon, Banana, Sunflower Seed, Honey, Cinnamon (475ml)'),
             )
         ),
-        array(
-            'name' => 'Mental Focus Plan',
-            'icon' => '🎯',
-            'description' => 'Brain-boosting fruits to enhance concentration, memory, and mental clarity for peak performance.',
-            'plans' => array(
-                array('duration' => '7 Days', 'price' => '₦20,000'),
-                array('duration' => '14 Days', 'price' => '₦35,000'),
-            )
-        ),
-        array(
-            'name' => 'Immune Booster Plan',
-            'icon' => '🛡️',
-            'description' => 'Vitamin C and antioxidant-rich fruit combinations to strengthen your immune system naturally.',
-            'plans' => array(
-                array('duration' => '7 Days', 'price' => '₦25,000'),
-                array('duration' => '14 Days', 'price' => '₦45,000'),
-            )
-        ),
-        array(
-            'name' => 'Detox & Cleanse Plan',
-            'icon' => '🌿',
-            'description' => 'Cleansing fruit plans to flush toxins, improve digestion, and rejuvenate your body systems.',
-            'plans' => array(
-                array('duration' => '3 Days', 'price' => '₦15,000'),
-                array('duration' => '7 Days', 'price' => '₦30,000'),
-                array('duration' => '14 Days', 'price' => '₦55,000'),
-            )
-        ),
-        array(
-            'name' => 'Fertility Support Plan',
-            'icon' => '🌸',
-            'description' => 'Specially curated fruits rich in folate and essential nutrients to support reproductive health.',
-            'plans' => array(
-                array('duration' => '14 Days', 'price' => '₦40,000'),
-                array('duration' => '30 Days', 'price' => '₦75,000'),
-            )
-        ),
-        array(
-            'name' => 'Diabetes Management Plan',
-            'icon' => '🍇',
-            'description' => 'Low glycemic fruits carefully selected to help manage blood sugar levels naturally.',
-            'plans' => array(
-                array('duration' => '7 Days', 'price' => '₦25,000'),
-                array('duration' => '14 Days', 'price' => '₦45,000'),
-                array('duration' => '30 Days', 'price' => '₦80,000'),
+        'weight_maintenance' => array(
+            'title' => 'Weight Maintenance',
+            'icon' => '⚖️',
+            'description' => 'Balanced fruit salads and smoothies to help maintain your ideal weight naturally',
+            'items' => array(
+                array('name' => 'Weight Maintenance Fruit Salad', 'price' => '₦8,000', 'description' => 'Apple, Pineapple, Watermelon, Cucumber, Grapes, Greek Yogurt, Almonds, Flax seeds, Honey (1000ml)'),
+                array('name' => 'Weight Maintenance Smoothie', 'price' => '₦6,500', 'description' => 'Apple, Banana, Pineapple, Oat, Greek Yoghurt, Flax seed, Honey (475ml)'),
             )
         ),
     );
+}
+
+/**
+ * Get special wellness plans data (for subscription plans)
+ * Kept for reference but primary focus is now on special plan menu items
+ */
+function ftp_get_special_plans() {
+    return ftp_get_special_plan_categories();
 }
 
 /**

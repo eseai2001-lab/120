@@ -171,10 +171,10 @@ function ftp_menu_full_shortcode() {
 
 /**
  * Special plans section shortcode (preview)
- * Shows plan cards with image placeholders, title and description
+ * Shows plan categories with image placeholders, title and description
  */
 function ftp_special_plans_section_shortcode() {
-    $plans = ftp_get_special_plans();
+    $plan_categories = ftp_get_special_plan_categories();
     $settings = get_option('ftp_settings', array());
     $plan_images = isset($settings['plan_images']) ? $settings['plan_images'] : array();
     $special_plans_url = ftp_get_special_plans_page_url();
@@ -183,35 +183,31 @@ function ftp_special_plans_section_shortcode() {
     <section class="ftp-special-plans-section ftp-section" id="ftp-special-plans">
         <div class="ftp-container">
             <div class="ftp-section-header ftp-fade-in-up">
-                <h2 class="ftp-section-title">Special Wellness Plans</h2>
-                <p class="ftp-section-subtitle">Customized therapeutic fruit plans designed to help you achieve your specific health and wellness goals</p>
+                <h2 class="ftp-section-title">Special Plan Menu</h2>
+                <p class="ftp-section-subtitle">Therapeutic fruit salads and smoothies designed to help you achieve your specific health and wellness goals</p>
             </div>
             <div class="ftp-plans-preview">
                 <div class="ftp-plans-grid">
-                    <?php foreach (array_slice($plans, 0, 6) as $index => $plan) : 
-                        $plan_key = sanitize_title($plan['name']);
+                    <?php foreach ($plan_categories as $key => $category) : 
+                        $plan_key = sanitize_title($category['title']);
                         $image_url = isset($plan_images[$plan_key]) && !empty($plan_images[$plan_key]) ? $plan_images[$plan_key] : '';
                     ?>
                     <div class="ftp-plan-card ftp-fade-in-up">
                         <div class="ftp-plan-card-image" <?php if ($image_url) : ?>style="background-image: url('<?php echo esc_url($image_url); ?>');"<?php endif; ?>>
                             <?php if (!$image_url) : ?>
                             <div class="ftp-plan-card-placeholder">
-                                <span class="ftp-plan-placeholder-text"><?php echo esc_html($plan['name']); ?></span>
+                                <span class="ftp-plan-placeholder-text"><?php echo esc_html($category['title']); ?></span>
                             </div>
                             <?php endif; ?>
                         </div>
-                        <h3 class="ftp-plan-title"><?php echo esc_html($plan['name']); ?></h3>
-                        <p class="ftp-plan-desc"><?php echo esc_html($plan['description']); ?></p>
-                        <?php 
-                        $whatsapp_url = ftp_whatsapp_url(ftp_get_support_phone(), "Hello 120! I'm interested in your " . $plan['name'] . " wellness plan. Please provide more details about duration and pricing.");
-                        ?>
-                        <a href="<?php echo esc_url($whatsapp_url); ?>" class="ftp-btn ftp-btn-outline" target="_blank" rel="noopener">Learn More</a>
+                        <h3 class="ftp-plan-title"><?php echo esc_html($category['title']); ?></h3>
+                        <p class="ftp-plan-desc"><?php echo esc_html($category['description']); ?></p>
                     </div>
                     <?php endforeach; ?>
                 </div>
             </div>
             <div class="ftp-section-cta ftp-fade-in-up">
-                <a href="<?php echo esc_url($special_plans_url); ?>" class="ftp-btn ftp-btn-primary ftp-btn-large">View All Special Plans</a>
+                <a href="<?php echo esc_url($special_plans_url); ?>" class="ftp-btn ftp-btn-primary ftp-btn-large">View Special Plans Menu</a>
             </div>
         </div>
     </section>
