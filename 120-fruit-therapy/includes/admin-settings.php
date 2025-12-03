@@ -46,6 +46,10 @@ function ftp_sanitize_settings($input) {
         $sanitized['hero_video_url'] = esc_url_raw($input['hero_video_url']);
     }
     
+    if (isset($input['hero_image_url'])) {
+        $sanitized['hero_image_url'] = esc_url_raw($input['hero_image_url']);
+    }
+    
     if (isset($input['menu_page_url'])) {
         $sanitized['menu_page_url'] = esc_url_raw($input['menu_page_url']);
     }
@@ -152,6 +156,30 @@ function ftp_settings_page() {
                                 </button>
                             </div>
                             <p class="description">Upload or enter the URL of the hero section background video. Leave empty to use default.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">
+                            <label for="ftp_hero_image_url">Hero Image (Alternative)</label>
+                        </th>
+                        <td>
+                            <div class="ftp-media-field">
+                                <input type="text" 
+                                       id="ftp_hero_image_url" 
+                                       name="ftp_settings[hero_image_url]" 
+                                       value="<?php echo esc_attr($settings['hero_image_url'] ?? ''); ?>" 
+                                       class="regular-text ftp-media-url">
+                                <button type="button" class="button ftp-media-upload" data-target="ftp_hero_image_url">
+                                    Upload Image
+                                </button>
+                                <?php if (!empty($settings['hero_image_url'])) : ?>
+                                <div class="ftp-image-preview">
+                                    <img src="<?php echo esc_url($settings['hero_image_url']); ?>" alt="Hero Image Preview">
+                                </div>
+                                <?php endif; ?>
+                            </div>
+                            <p class="description">Upload an image to use as hero background instead of video. If both video and image are set, video takes priority.</p>
                         </td>
                     </tr>
                     

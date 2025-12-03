@@ -48,6 +48,16 @@ function ftp_get_hero_video_url() {
 }
 
 /**
+ * Get the hero image URL (alternative to video)
+ * 
+ * @return string Image URL or empty string
+ */
+function ftp_get_hero_image_url() {
+    $settings = get_option('ftp_settings', array());
+    return !empty($settings['hero_image_url']) ? $settings['hero_image_url'] : '';
+}
+
+/**
  * Get the menu page URL for floating button
  * 
  * @return string Menu page URL

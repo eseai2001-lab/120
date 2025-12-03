@@ -87,13 +87,19 @@ function ftp_header_shortcode() {
  */
 function ftp_hero_shortcode() {
     $whatsapp_order_url = ftp_whatsapp_url(ftp_get_order_phone(), "Hello 120 Fruit Therapy! I would like to place an order. Please assist me with your menu options.");
+    $hero_video_url = ftp_get_hero_video_url();
+    $hero_image_url = ftp_get_hero_image_url();
     ob_start();
     ?>
     <section class="ftp-hero" id="ftp-hero">
         <div class="ftp-hero-video-container">
+            <?php if (!empty($hero_video_url)) : ?>
             <video class="ftp-hero-video" autoplay muted loop playsinline>
-                <source src="<?php echo esc_url(ftp_get_hero_video_url()); ?>" type="video/mp4">
+                <source src="<?php echo esc_url($hero_video_url); ?>" type="video/mp4">
             </video>
+            <?php elseif (!empty($hero_image_url)) : ?>
+            <img class="ftp-hero-image" src="<?php echo esc_url($hero_image_url); ?>" alt="Hero Background">
+            <?php endif; ?>
             <div class="ftp-hero-overlay"></div>
         </div>
         <div class="ftp-hero-content">

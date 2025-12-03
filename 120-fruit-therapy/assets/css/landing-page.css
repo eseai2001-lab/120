@@ -522,6 +522,12 @@
     object-fit: cover;
 }
 
+.ftp-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .ftp-hero-overlay {
     position: absolute;
     top: 0;
