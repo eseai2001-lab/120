@@ -74,6 +74,10 @@ function ftp_sanitize_settings($input) {
         $sanitized['plan_images'] = array_map('esc_url_raw', $input['plan_images']);
     }
     
+    if (isset($input['special_plan_menu_images']) && is_array($input['special_plan_menu_images'])) {
+        $sanitized['special_plan_menu_images'] = array_map('esc_url_raw', $input['special_plan_menu_images']);
+    }
+    
     return $sanitized;
 }
 
@@ -304,6 +308,43 @@ function ftp_settings_page() {
             </div>
             
             <div class="ftp-settings-section">
+                <h2>Special Plan Menu Category Images</h2>
+                <p class="description">Upload images for each special plan menu category (Weight Loss, Weight Gain, Libido, Weight Maintenance). These will appear as card backgrounds on the landing page and menu pages.</p>
+                
+                <table class="form-table">
+                    <?php 
+                    $special_plan_categories = ftp_get_special_plan_categories();
+                    foreach ($special_plan_categories as $key => $category) : 
+                    ?>
+                    <tr>
+                        <th scope="row">
+                            <label for="ftp_spm_<?php echo esc_attr($key); ?>">
+                                <?php echo esc_html($category['title']); ?>
+                            </label>
+                        </th>
+                        <td>
+                            <div class="ftp-media-field">
+                                <input type="text" 
+                                       id="ftp_spm_<?php echo esc_attr($key); ?>" 
+                                       name="ftp_settings[special_plan_menu_images][<?php echo esc_attr($key); ?>]" 
+                                       value="<?php echo esc_attr(isset($settings['special_plan_menu_images'][$key]) ? $settings['special_plan_menu_images'][$key] : ''); ?>" 
+                                       class="regular-text ftp-media-url">
+                                <button type="button" class="button ftp-media-upload" data-target="ftp_spm_<?php echo esc_attr($key); ?>">
+                                    Upload
+                                </button>
+                                <?php if (isset($settings['special_plan_menu_images'][$key]) && !empty($settings['special_plan_menu_images'][$key])) : ?>
+                                <div class="ftp-image-preview">
+                                    <img src="<?php echo esc_url($settings['special_plan_menu_images'][$key]); ?>" alt="<?php echo esc_attr($category['title']); ?>">
+                                </div>
+                                <?php endif; ?>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+            
+            <div class="ftp-settings-section">
                 <h2>Shortcodes Reference</h2>
                 <table class="widefat">
                     <thead>
@@ -323,7 +364,11 @@ function ftp_settings_page() {
                         </tr>
                         <tr>
                             <td><code>[ftp_special_plans_full]</code></td>
-                            <td>Full special plans page</td>
+                            <td>Full special plans page (wellness programs with durations)</td>
+                        </tr>
+                        <tr>
+                            <td><code>[ftp_special_plan_menu_full]</code></td>
+                            <td>Special plan menu page (weight loss/gain fruit salads &amp; smoothies)</td>
                         </tr>
                         <tr>
                             <td><code>[ftp_header]</code></td>
@@ -336,6 +381,10 @@ function ftp_settings_page() {
                         <tr>
                             <td><code>[ftp_menu_section]</code></td>
                             <td>Menu preview section</td>
+                        </tr>
+                        <tr>
+                            <td><code>[ftp_special_plan_menu_section]</code></td>
+                            <td>Special plan menu preview section for landing page</td>
                         </tr>
                         <tr>
                             <td><code>[ftp_footer]</code></td>
@@ -365,5 +414,14 @@ function ftp_get_setting($key, $default = '') {
 function ftp_get_category_image($category_key) {
     $settings = get_option('ftp_settings', array());
     $images = isset($settings['category_images']) ? $settings['category_images'] : array();
+    return isset($images[$category_key]) && !empty($images[$category_key]) ? $images[$category_key] : '';
+}
+
+/**
+ * Get special plan menu category image
+ */
+function ftp_get_special_plan_menu_image($category_key) {
+    $settings = get_option('ftp_settings', array());
+    $images = isset($settings['special_plan_menu_images']) ? $settings['special_plan_menu_images'] : array();
     return isset($images[$category_key]) && !empty($images[$category_key]) ? $images[$category_key] : '';
 }
