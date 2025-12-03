@@ -1916,17 +1916,17 @@
 
 .ftp-support-popup {
     position: absolute;
-    bottom: 130px;
+    bottom: 60px;
     right: 50%;
     transform: translateX(50%);
     background: linear-gradient(135deg, var(--ftp-gold), var(--ftp-gold-dark));
     color: var(--ftp-black);
-    padding: 10px 18px;
-    border-radius: 20px;
-    font-size: 0.85rem;
+    padding: 8px 14px;
+    border-radius: 15px;
+    font-size: 0.75rem;
     font-weight: 700;
     white-space: nowrap;
-    box-shadow: 0 5px 25px rgba(255, 215, 0, 0.5);
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.5);
     animation: ftp-popup-bounce 2s ease-in-out infinite;
 }
 
@@ -1946,38 +1946,45 @@
     border-top: 8px solid var(--ftp-gold);
 }
 
-/* iPhone Button Design */
+/* Chat Icon Button Design */
 .ftp-support-btn {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 55px;
-    height: 110px;
-    background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
-    border-radius: 12px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--ftp-primary) 0%, #cc0000 100%);
+    border-radius: 50%;
     text-decoration: none;
     box-shadow: 
-        0 10px 40px rgba(0, 0, 0, 0.6),
-        0 0 0 2px #3d3d3d,
-        inset 0 0 20px rgba(255, 255, 255, 0.05);
+        0 5px 25px rgba(255, 0, 0, 0.5),
+        0 0 20px rgba(255, 215, 0, 0.3);
     transition: all 0.3s ease;
     position: relative;
-    overflow: visible;
+    animation: ftp-chat-pulse 2s ease-in-out infinite;
 }
 
-/* iPhone notch/dynamic island */
+/* Gold sparkle ring around chat icon */
 .ftp-support-btn::before {
     content: '';
     position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 5px;
-    background: #000;
-    border-radius: 3px;
-    z-index: 10;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    border: 2px solid var(--ftp-gold);
+    animation: ftp-gold-ring-pulse 2s ease-in-out infinite;
+}
+
+@keyframes ftp-chat-pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 5px 25px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3); }
+    50% { transform: scale(1.05); box-shadow: 0 8px 35px rgba(255, 0, 0, 0.7), 0 0 30px rgba(255, 215, 0, 0.5); }
+}
+
+@keyframes ftp-gold-ring-pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
 }
 
 /* iPhone screen */
@@ -2104,33 +2111,55 @@
     border-radius: 2px;
 }
 
-/* Hover effects */
-.ftp-support-btn:hover {
-    transform: scale(1.1) translateY(-5px);
-    box-shadow: 
-        0 20px 50px rgba(0, 0, 0, 0.7),
-        0 0 0 3px #4d4d4d,
-        0 0 30px rgba(255, 0, 0, 0.3),
-        inset 0 0 20px rgba(255, 255, 255, 0.1);
+/* Chat icon styling */
+.ftp-chat-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--ftp-gold);
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+    animation: ftp-icon-sparkle 1.5s ease-in-out infinite;
 }
 
-.ftp-support-btn:hover .ftp-iphone-screen {
+@keyframes ftp-icon-sparkle {
+    0%, 100% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8)); }
+    50% { filter: drop-shadow(0 0 12px rgba(255, 215, 0, 1)); }
+}
+
+/* Hover effects */
+.ftp-support-btn:hover {
+    transform: scale(1.15);
+    animation: none;
     box-shadow: 
-        inset 0 0 15px rgba(255, 0, 0, 0.3),
-        0 0 10px rgba(255, 0, 0, 0.2);
+        0 8px 35px rgba(255, 0, 0, 0.7),
+        0 0 40px rgba(255, 215, 0, 0.6);
+}
+
+.ftp-support-btn:hover .ftp-chat-icon {
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1));
 }
 
 /* Pulse ring animation */
 .ftp-support-btn::after {
     content: '';
     position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    border: 2px solid rgba(255, 215, 0, 0.3);
-    border-radius: 16px;
-    animation: ftp-iphone-ring 2s ease-out infinite;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    border-radius: 50%;
+    animation: ftp-chat-ring 2s ease-out infinite;
+}
+
+@keyframes ftp-chat-ring {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
 }
 
 @keyframes ftp-iphone-ring {
