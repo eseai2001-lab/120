@@ -223,14 +223,14 @@
     animation: ftp-logo-sparkle 2s ease-in-out infinite;
 }
 
-/* Straw inside the 0 - positioned like it's inside a cup */
+/* Straw inside the 0 - positioned diagonally to the right like it's inside a cup */
 .ftp-logo-straw {
     position: absolute;
-    top: 2px;
-    left: 50%;
-    transform: translateX(-50%) rotate(-20deg);
+    top: 0px;
+    left: 55%;
+    transform: translateX(-30%) rotate(25deg);
     width: 3px;
-    height: 28px;
+    height: 26px;
     background: linear-gradient(180deg, 
         #FFD700 0%, 
         #FFEC8B 15%, 
@@ -249,17 +249,18 @@
     transform-origin: bottom center;
 }
 
-/* Straw tip - bent at the top */
+/* Straw tip - bent to the right */
 .ftp-logo-straw::before {
     content: '';
     position: absolute;
-    top: -8px;
-    left: -1px;
+    top: -6px;
+    left: 1px;
     width: 3px;
     height: 10px;
     background: linear-gradient(180deg, #FFEC8B, #FFD700);
     border-radius: 1.5px;
-    transform: rotate(25deg);
+    transform: rotate(45deg);
+    transform-origin: bottom left;
     box-shadow: 0 0 10px rgba(255, 215, 0, 1);
 }
 
@@ -267,8 +268,8 @@
 .ftp-logo-straw::after {
     content: '';
     position: absolute;
-    top: -12px;
-    left: -2px;
+    top: -10px;
+    left: 6px;
     width: 6px;
     height: 6px;
     background: radial-gradient(circle, #FFFFFF 0%, #FFD700 50%, transparent 70%);
@@ -1843,8 +1844,9 @@
 }
 
 .ftp-footer-logo .ftp-logo-straw {
-    top: 4px;
-    height: 32px;
+    top: 2px;
+    left: 55%;
+    height: 30px;
 }
 
 /* ===================== SECTION PROGRESS BAR ===================== */
@@ -1904,7 +1906,7 @@
     content: '✨ ';
 }
 
-/* ===================== FLOATING ORDER BUTTON - 120 LOGO DESIGN ===================== */
+/* ===================== FLOATING IPHONE BUTTON ===================== */
 .ftp-floating-support {
     position: fixed;
     bottom: 30px;
@@ -1914,14 +1916,14 @@
 
 .ftp-support-popup {
     position: absolute;
-    bottom: 85px;
+    bottom: 130px;
     right: 50%;
     transform: translateX(50%);
     background: linear-gradient(135deg, var(--ftp-gold), var(--ftp-gold-dark));
     color: var(--ftp-black);
-    padding: 8px 16px;
+    padding: 10px 18px;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 700;
     white-space: nowrap;
     box-shadow: 0 5px 25px rgba(255, 215, 0, 0.5);
@@ -1944,143 +1946,210 @@
     border-top: 8px solid var(--ftp-gold);
 }
 
+/* iPhone Button Design */
 .ftp-support-btn {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 70px;
-    height: 70px;
-    background: linear-gradient(135deg, var(--ftp-primary-red), #cc0000);
-    border-radius: 50%;
+    width: 55px;
+    height: 110px;
+    background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    border-radius: 12px;
     text-decoration: none;
     box-shadow: 
-        0 5px 25px rgba(255, 0, 0, 0.5),
-        0 0 0 3px rgba(255, 215, 0, 0.3);
+        0 10px 40px rgba(0, 0, 0, 0.6),
+        0 0 0 2px #3d3d3d,
+        inset 0 0 20px rgba(255, 255, 255, 0.05);
     transition: all 0.3s ease;
-    animation: ftp-order-pulse 2s infinite;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
+/* iPhone notch/dynamic island */
 .ftp-support-btn::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent 40%, rgba(255, 215, 0, 0.4) 50%, transparent 60%);
-    animation: ftp-btn-shine 3s ease-in-out infinite;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 5px;
+    background: #000;
+    border-radius: 3px;
+    z-index: 10;
 }
 
-@keyframes ftp-btn-shine {
-    0% { transform: rotate(0deg) translateX(-100%); }
-    100% { transform: rotate(360deg) translateX(100%); }
-}
-
-.ftp-support-btn:hover {
-    transform: scale(1.15);
-    box-shadow: 
-        0 10px 40px rgba(255, 0, 0, 0.6),
-        0 0 0 5px rgba(255, 215, 0, 0.5);
-}
-
-/* 120 Logo in floating button */
-.ftp-support-btn.ftp-order-logo {
+/* iPhone screen */
+.ftp-iphone-screen {
+    width: 47px;
+    height: 85px;
+    background: linear-gradient(135deg, #0a0000 0%, #1a0000 50%, #0a0000 100%);
+    border-radius: 6px;
+    margin-top: 8px;
+    display: flex;
     flex-direction: column;
-}
-
-.ftp-order-logo-text {
-    font-family: 'Georgia', serif;
-    font-size: 1rem;
-    font-weight: 800;
-    font-style: italic;
-    color: var(--ftp-white);
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    line-height: 1;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    z-index: 1;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.2);
 }
 
-.ftp-order-logo-zero {
+/* Screen glow effect */
+.ftp-iphone-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
+    animation: ftp-screen-pulse 2s ease-in-out infinite;
+}
+
+@keyframes ftp-screen-pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* 120 Logo on screen */
+.ftp-iphone-logo {
+    display: flex;
+    align-items: center;
     font-family: 'Georgia', serif;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 800;
     font-style: italic;
-    color: var(--ftp-white);
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    animation: ftp-logo-glow 2s ease-in-out infinite;
+    z-index: 2;
+}
+
+@keyframes ftp-logo-glow {
+    0%, 100% { 
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.8), 0 0 10px rgba(255, 215, 0, 0.5);
+        filter: brightness(1);
+    }
+    50% { 
+        text-shadow: 0 0 15px rgba(255, 0, 0, 1), 0 0 25px rgba(255, 215, 0, 0.8);
+        filter: brightness(1.2);
+    }
+}
+
+.ftp-iphone-logo-text {
+    color: #FF0000;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+}
+
+.ftp-iphone-logo-zero {
+    color: #FF0000;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
     position: relative;
     display: inline-block;
-    z-index: 1;
 }
 
-.ftp-order-straw {
+/* Mini straw on screen logo - diagonal right with bent tip */
+.ftp-iphone-straw {
     position: absolute;
-    top: 1px;
-    left: 50%;
-    transform: translateX(-50%) rotate(-20deg);
+    top: -1px;
+    left: 55%;
+    transform: rotate(25deg);
     width: 2px;
-    height: 16px;
-    background: linear-gradient(180deg, 
-        #FFD700 0%, 
-        #FFEC8B 30%, 
-        #FFD700 70%,
-        #DAA520 100%);
+    height: 10px;
+    background: linear-gradient(180deg, #FFD700, #FFEC8B, #FFD700);
     border-radius: 1px;
-    box-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
-    animation: ftp-straw-glow 1.5s ease-in-out infinite alternate;
-    z-index: 2;
+    box-shadow: 0 0 4px rgba(255, 215, 0, 0.8);
     transform-origin: bottom center;
 }
 
-.ftp-order-straw::before {
+.ftp-iphone-straw::before {
     content: '';
     position: absolute;
-    top: -5px;
-    left: -1px;
+    top: -3px;
+    left: 0;
     width: 2px;
-    height: 6px;
-    background: linear-gradient(180deg, #FFEC8B, #FFD700);
+    height: 5px;
+    background: #FFEC8B;
     border-radius: 1px;
-    transform: rotate(25deg);
-    box-shadow: 0 0 5px rgba(255, 215, 0, 1);
+    transform: rotate(40deg);
+    transform-origin: bottom left;
 }
 
-.ftp-order-straw::after {
+/* Place Order text on screen */
+.ftp-iphone-order-text {
+    font-size: 0.5rem;
+    font-weight: 700;
+    color: var(--ftp-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 6px;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    animation: ftp-text-blink 1.5s ease-in-out infinite;
+}
+
+@keyframes ftp-text-blink {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* iPhone home indicator */
+.ftp-iphone-home {
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+/* Hover effects */
+.ftp-support-btn:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.7),
+        0 0 0 3px #4d4d4d,
+        0 0 30px rgba(255, 0, 0, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.ftp-support-btn:hover .ftp-iphone-screen {
+    box-shadow: 
+        inset 0 0 15px rgba(255, 0, 0, 0.3),
+        0 0 10px rgba(255, 0, 0, 0.2);
+}
+
+/* Pulse ring animation */
+.ftp-support-btn::after {
     content: '';
     position: absolute;
-    top: -8px;
-    left: -1px;
-    width: 4px;
-    height: 4px;
-    background: radial-gradient(circle, #FFFFFF 0%, #FFD700 50%, transparent 70%);
-    border-radius: 50%;
-    animation: ftp-straw-sparkle 1s ease-in-out infinite;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 16px;
+    animation: ftp-iphone-ring 2s ease-out infinite;
 }
 
-.ftp-support-icon {
-    font-size: 1.5rem;
-}
-
-@keyframes ftp-order-pulse {
+@keyframes ftp-iphone-ring {
     0% {
-        box-shadow: 
-            0 0 0 0 rgba(255, 0, 0, 0.5),
-            0 5px 25px rgba(255, 0, 0, 0.5),
-            0 0 0 3px rgba(255, 215, 0, 0.3);
-    }
-    50% {
-        box-shadow: 
-            0 0 0 15px rgba(255, 0, 0, 0),
-            0 5px 25px rgba(255, 0, 0, 0.5),
-            0 0 0 5px rgba(255, 215, 0, 0.5);
+        transform: scale(1);
+        opacity: 1;
     }
     100% {
-        box-shadow: 
-            0 0 0 0 rgba(255, 0, 0, 0),
-            0 5px 25px rgba(255, 0, 0, 0.5),
-            0 0 0 3px rgba(255, 215, 0, 0.3);
+        transform: scale(1.2);
+        opacity: 0;
     }
+}
+
+/* Hide old elements */
+.ftp-support-icon,
+.ftp-order-logo-text,
+.ftp-order-logo-zero,
+.ftp-order-straw {
+    display: none;
 }
 
 /* ===================== RESPONSIVE STYLES ===================== */

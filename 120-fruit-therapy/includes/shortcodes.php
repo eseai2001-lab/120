@@ -601,11 +601,17 @@ function ftp_footer_shortcode() {
         <div class="ftp-section-hint" id="ftp-section-hint"></div>
     </div>
     
-    <!-- Floating Order Button - 120 Logo Design -->
+    <!-- Floating Order Button - iPhone Design -->
     <div class="ftp-floating-support" id="ftp-floating-support">
-        <div class="ftp-support-popup">Place Order</div>
-        <a href="<?php echo esc_url(ftp_get_menu_page_url()); ?>" class="ftp-support-btn ftp-order-logo">
-            <span class="ftp-order-logo-text">12</span><span class="ftp-order-logo-zero">0<span class="ftp-order-straw"></span></span>
+        <div class="ftp-support-popup">Place Orders Here</div>
+        <a href="<?php echo esc_url(ftp_get_menu_page_url()); ?>" class="ftp-support-btn">
+            <div class="ftp-iphone-screen">
+                <div class="ftp-iphone-logo">
+                    <span class="ftp-iphone-logo-text">12</span><span class="ftp-iphone-logo-zero">0<span class="ftp-iphone-straw"></span></span>
+                </div>
+                <span class="ftp-iphone-order-text">Place Order</span>
+            </div>
+            <div class="ftp-iphone-home"></div>
         </a>
     </div>
     <?php
