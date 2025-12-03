@@ -54,6 +54,10 @@ function ftp_sanitize_settings($input) {
         $sanitized['special_plans_page_url'] = esc_url_raw($input['special_plans_page_url']);
     }
     
+    if (isset($input['special_plan_menu_page_url'])) {
+        $sanitized['special_plan_menu_page_url'] = esc_url_raw($input['special_plan_menu_page_url']);
+    }
+    
     if (isset($input['instagram_url'])) {
         $sanitized['instagram_url'] = esc_url_raw($input['instagram_url']);
     }
@@ -171,7 +175,21 @@ function ftp_settings_page() {
                                    name="ftp_settings[special_plans_page_url]" 
                                    value="<?php echo esc_attr($settings['special_plans_page_url'] ?? ''); ?>" 
                                    class="regular-text">
-                            <p class="description">Enter the URL of the page containing the [ftp_special_plans_full] shortcode.</p>
+                            <p class="description">Enter the URL of the page containing the [ftp_special_plans_full] shortcode (wellness program page).</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">
+                            <label for="ftp_special_plan_menu_page_url">Special Plan Menu Page URL</label>
+                        </th>
+                        <td>
+                            <input type="text" 
+                                   id="ftp_special_plan_menu_page_url" 
+                                   name="ftp_settings[special_plan_menu_page_url]" 
+                                   value="<?php echo esc_attr($settings['special_plan_menu_page_url'] ?? ''); ?>" 
+                                   class="regular-text">
+                            <p class="description">Enter the URL of the page containing the [ftp_special_plan_menu_full] shortcode (special plan menu items).</p>
                         </td>
                     </tr>
                 </table>

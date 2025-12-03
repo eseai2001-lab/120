@@ -18,6 +18,7 @@ function ftp_register_shortcodes() {
     add_shortcode('ftp_menu_full', 'ftp_menu_full_shortcode');
     add_shortcode('ftp_special_plans_section', 'ftp_special_plans_section_shortcode');
     add_shortcode('ftp_special_plans_full', 'ftp_special_plans_full_shortcode');
+    add_shortcode('ftp_special_plan_menu_full', 'ftp_special_plan_menu_full_shortcode');
     add_shortcode('ftp_gift_packages', 'ftp_gift_packages_shortcode');
     add_shortcode('ftp_wellness_events', 'ftp_wellness_events_shortcode');
     add_shortcode('ftp_special_offers', 'ftp_special_offers_shortcode');
@@ -177,7 +178,7 @@ function ftp_special_plans_section_shortcode() {
     $plan_categories = ftp_get_special_plan_categories();
     $settings = get_option('ftp_settings', array());
     $plan_images = isset($settings['plan_images']) ? $settings['plan_images'] : array();
-    $special_plans_url = ftp_get_special_plans_page_url();
+    $special_plan_menu_url = ftp_get_special_plan_menu_page_url();
     ob_start();
     ?>
     <section class="ftp-special-plans-section ftp-section" id="ftp-special-plans">
@@ -207,7 +208,7 @@ function ftp_special_plans_section_shortcode() {
                 </div>
             </div>
             <div class="ftp-section-cta ftp-fade-in-up">
-                <a href="<?php echo esc_url($special_plans_url); ?>" class="ftp-btn ftp-btn-primary ftp-btn-large">View Special Plans Menu</a>
+                <a href="<?php echo esc_url($special_plan_menu_url); ?>" class="ftp-btn ftp-btn-primary ftp-btn-large">View Special Plans Menu</a>
             </div>
         </div>
     </section>
@@ -221,6 +222,15 @@ function ftp_special_plans_section_shortcode() {
 function ftp_special_plans_full_shortcode() {
     ob_start();
     include FTP_PLUGIN_DIR . 'templates/special-plans-page.php';
+    return ob_get_clean();
+}
+
+/**
+ * Full special plan menu page shortcode (separate from wellness plans)
+ */
+function ftp_special_plan_menu_full_shortcode() {
+    ob_start();
+    include FTP_PLUGIN_DIR . 'templates/special-plan-menu-page.php';
     return ob_get_clean();
 }
 

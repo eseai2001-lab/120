@@ -68,6 +68,16 @@ function ftp_get_special_plans_page_url() {
 }
 
 /**
+ * Get the special plan menu page URL
+ * 
+ * @return string Special plan menu page URL
+ */
+function ftp_get_special_plan_menu_page_url() {
+    $settings = get_option('ftp_settings', array());
+    return !empty($settings['special_plan_menu_page_url']) ? $settings['special_plan_menu_page_url'] : '#ftp-special-plan-menu';
+}
+
+/**
  * Get menu items data
  * Updated with actual menu items from 120 Fruit Therapy Place
  */
