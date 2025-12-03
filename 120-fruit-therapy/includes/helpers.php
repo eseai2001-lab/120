@@ -69,7 +69,7 @@ function ftp_get_special_plans_page_url() {
 
 /**
  * Get menu items data
- * Updated with actual menu items from 120Menu images
+ * Updated with actual menu items from 120 Fruit Therapy Place
  */
 function ftp_get_menu_items() {
     return array(
@@ -78,117 +78,98 @@ function ftp_get_menu_items() {
             'icon' => '🥗',
             'description' => 'Fresh seasonal fruits, carefully selected and hygienically prepared with natural dressings and superfoods',
             'items' => array(
-                array('name' => 'Fruit Salad Small', 'price' => '₦2,000', 'description' => 'Small portion of fresh mixed fruits'),
-                array('name' => 'Fruit Salad Medium', 'price' => '₦3,000', 'description' => 'Medium portion of fresh mixed fruits'),
-                array('name' => 'Fruit Salad Large', 'price' => '₦5,000', 'description' => 'Large portion of fresh mixed fruits'),
-                array('name' => 'Fruit Salad Family', 'price' => '₦8,000', 'description' => 'Family size portion of fresh mixed fruits'),
-            )
-        ),
-        'smoothies' => array(
-            'title' => 'Smoothies',
-            'icon' => '🥤',
-            'description' => 'Nutrient-packed smoothies with fresh fruits, superfoods, and natural supplements for optimal health',
-            'items' => array(
-                array('name' => 'Banana Smoothie', 'price' => '₦1,500', 'description' => 'Creamy banana smoothie'),
-                array('name' => 'Mango Smoothie', 'price' => '₦2,000', 'description' => 'Fresh mango smoothie'),
-                array('name' => 'Strawberry Smoothie', 'price' => '₦2,500', 'description' => 'Fresh strawberry smoothie'),
-                array('name' => 'Mixed Berry Smoothie', 'price' => '₦3,000', 'description' => 'Blend of fresh berries'),
-                array('name' => 'Green Detox Smoothie', 'price' => '₦2,500', 'description' => 'Spinach, apple, ginger blend'),
-                array('name' => 'Tropical Smoothie', 'price' => '₦2,500', 'description' => 'Tropical fruit blend'),
+                array('name' => 'Throne Feast Fruit Salad', 'price' => '₦11,000', 'description' => 'Greek Yoghurt, Strawberry, Blueberry, Granola, Almond, Banana, Grapes, Coconut, Peanuts, Cashew Nuts, Honey, Pumpkin Seed, Raisin, Apple (1000ml)'),
+                array('name' => 'Premium Fruit Salad', 'price' => '₦9,000', 'description' => 'Strawberry, Blueberry, Granola, Almond, Dates, Banana, Watermelon, Cucumber, Pawpaw, Pineapple, Grapes, Coconut, Groundnuts, Peanuts, Cashew Nuts, Honey, Evaporated Milk, Condensed Milk, Milk Powder (1000ml)'),
+                array('name' => 'Mini Premium Fruit Salad', 'price' => '₦5,500', 'description' => 'Strawberry, Blueberry, Granola, Almond, Dates, Banana, Watermelon, Cucumber, Pawpaw, Pineapple, Grapes, Coconut, Groundnuts, Peanuts, Cashew Nuts, Honey, Evaporated Milk, Condensed Milk, Milk Powder (750ml)'),
+                array('name' => 'Standard Fruit Salad', 'price' => '₦7,000', 'description' => 'Dates, Banana, Watermelon, Cucumber, Pawpaw, Pineapple, Apple, Grape, Coconut, Groundnut, Peanuts, Cashew nuts, Honey, Condensed Milk, Milk Powder (1000ml)'),
+                array('name' => 'Mini Standard Fruit Salad', 'price' => '₦4,500', 'description' => 'Dates, Banana, Watermelon, Cucumber, Pawpaw, Pineapple, Apple, Grape, Coconut, Groundnut, Peanuts, Cashew nuts, Honey, Condensed Milk, Milk Powder (750ml)'),
+                array('name' => 'Watermelon Salad', 'price' => '₦3,500', 'description' => 'Watermelon, Milk, Granola (750ml)'),
             )
         ),
         'parfaits' => array(
             'title' => 'Parfaits',
             'icon' => '🍨',
-            'description' => 'Layered parfaits with fresh fruits, granola, and creamy yogurt',
+            'description' => 'Layered parfaits with fresh fruits, granola, and creamy Greek yogurt',
             'items' => array(
-                array('name' => 'Classic Parfait', 'price' => '₦3,000', 'description' => 'Yogurt, fruits, and granola'),
-                array('name' => 'Granola Parfait', 'price' => '₦3,500', 'description' => 'Extra granola with honey'),
-                array('name' => 'Protein Parfait', 'price' => '₦4,000', 'description' => 'High protein with nuts'),
-                array('name' => 'Berry Parfait', 'price' => '₦4,000', 'description' => 'Mixed berries with yogurt'),
-                array('name' => 'Tropical Parfait', 'price' => '₦4,500', 'description' => 'Tropical fruits with coconut'),
+                array('name' => 'Premium Parfait', 'price' => '₦8,500', 'description' => 'Greek Yoghurt, Blueberry, Granola, Chocolate, Strawberry, Cashew Nuts, Coconuts, Grapes, Banana, Raisin, Almond, Groundnuts, Sprinkles'),
+                array('name' => 'Standard Parfait', 'price' => '₦7,000', 'description' => 'Greek Yoghurt, Granola, Chocolate, Cashew Nuts, Coconuts, Grape, Banana, Raisin, Groundnut (550ml)'),
+                array('name' => 'Mini Standard Parfait', 'price' => '₦4,000', 'description' => 'Greek Yoghurt, Granola, Cashew Nuts, Coconuts, Grape, Groundnut (300ml)'),
+                array('name' => 'Nut Parfait', 'price' => '₦6,500', 'description' => 'Greek Yoghurt, Cashew Nuts, Coconut, Groundnut, Peanut, Almond (550ml)'),
+                array('name' => 'Cake Parfait', 'price' => '₦7,500', 'description' => 'Greek Yoghurt, Banana Chocolate Cake, Red Velvet Cake (550ml)'),
+                array('name' => 'Fruit Parfait', 'price' => '₦4,000', 'description' => 'Greek Yoghurt, Granola, Banana, Grape, Apple, Groundnut (300ml)'),
             )
         ),
-        'fruit_juices' => array(
-            'title' => 'Fresh Juices',
-            'icon' => '🧃',
-            'description' => 'Freshly squeezed fruit juices with no added sugar',
+        'tigernut_drinks' => array(
+            'title' => 'Tiger Nut Milk',
+            'icon' => '🥜',
+            'description' => 'Traditional Nigerian tigernut drinks - Lactose and Sugar Free',
             'items' => array(
-                array('name' => 'Orange Juice', 'price' => '₦1,000', 'description' => 'Fresh squeezed orange'),
-                array('name' => 'Pineapple Juice', 'price' => '₦1,000', 'description' => 'Fresh pineapple juice'),
-                array('name' => 'Watermelon Juice', 'price' => '₦1,000', 'description' => 'Cool watermelon juice'),
-                array('name' => 'Apple Juice', 'price' => '₦1,200', 'description' => 'Fresh apple juice'),
-                array('name' => 'Carrot Juice', 'price' => '₦1,000', 'description' => 'Fresh carrot juice'),
-                array('name' => 'Mixed Juice', 'price' => '₦1,500', 'description' => 'Blend of fresh fruits'),
-            )
-        ),
-        'mocktails' => array(
-            'title' => 'Mocktails',
-            'icon' => '🍹',
-            'description' => 'Refreshing fruit-based mocktails with natural ingredients, herbs, and therapeutic benefits',
-            'items' => array(
-                array('name' => 'Virgin Mojito', 'price' => '₦2,500', 'description' => 'Lime, mint, and soda'),
-                array('name' => 'Pina Colada', 'price' => '₦3,000', 'description' => 'Pineapple and coconut'),
-                array('name' => 'Strawberry Daiquiri', 'price' => '₦3,000', 'description' => 'Strawberry blend'),
-                array('name' => 'Tropical Sunset', 'price' => '₦3,500', 'description' => 'Tropical fruit medley'),
-                array('name' => 'Berry Blast', 'price' => '₦3,000', 'description' => 'Mixed berry mocktail'),
+                array('name' => 'Tiger Nut Milk', 'price' => '₦3,000', 'description' => 'Tiger Nut, Almond, Coconut, Date - Lactose and Sugar Free (500ml)'),
             )
         ),
         'milkshakes' => array(
             'title' => 'Milkshakes',
             'icon' => '🥛',
-            'description' => 'Creamy milkshakes made with fresh fruits and premium ice cream',
+            'description' => 'Creamy milkshakes made with Greek yogurt and premium ingredients',
             'items' => array(
-                array('name' => 'Vanilla Milkshake', 'price' => '₦2,000', 'description' => 'Classic vanilla shake'),
-                array('name' => 'Chocolate Milkshake', 'price' => '₦2,500', 'description' => 'Rich chocolate shake'),
-                array('name' => 'Strawberry Milkshake', 'price' => '₦2,500', 'description' => 'Fresh strawberry shake'),
-                array('name' => 'Banana Milkshake', 'price' => '₦2,000', 'description' => 'Creamy banana shake'),
-                array('name' => 'Oreo Milkshake', 'price' => '₦3,000', 'description' => 'Oreo cookie shake'),
+                array('name' => 'Standard Milk Shake', 'price' => '₦6,500', 'description' => 'Greek Yoghurt, Milk, Whipped cream, Sprinkles, Cherry, Raisin, Dates (550ml)'),
+                array('name' => 'Mini Standard Milk Shake', 'price' => '₦3,500', 'description' => 'Greek Yoghurt, Milk, Sprinkles, Raisin (300ml)'),
+                array('name' => 'Chocolate Milk Shake', 'price' => '₦7,000', 'description' => 'Chocolate, Greek Yoghurt, Milk, Whipped Cream, Sprinkles, Cherry, Raisin, Dates (550ml)'),
+                array('name' => 'Strawberry Milk Shake', 'price' => '₦7,500', 'description' => 'Strawberry, Greek Yoghurt, Milk, Whipped Cream, Sprinkles, Cherry, Raisin, Dates (550ml)'),
             )
         ),
-        'tigernut_drinks' => array(
-            'title' => 'Tigernut Drinks (Kunu Aya)',
-            'icon' => '🥜',
-            'description' => 'Traditional Nigerian tigernut drinks with health benefits',
+        'fruit_juices' => array(
+            'title' => 'Fresh Juices (Cold Pressed)',
+            'icon' => '🧃',
+            'description' => 'Freshly cold pressed fruit juices with no added sugar',
             'items' => array(
-                array('name' => 'Plain Tigernut', 'price' => '₦1,000', 'description' => 'Pure tigernut milk'),
-                array('name' => 'Tigernut with Dates', 'price' => '₦1,500', 'description' => 'Sweetened with dates'),
-                array('name' => 'Tigernut with Coconut', 'price' => '₦1,500', 'description' => 'With coconut flavor'),
-                array('name' => 'Spiced Tigernut', 'price' => '₦1,500', 'description' => 'With ginger and spices'),
+                array('name' => 'Watermelon Fruit Juice', 'price' => '₦3,500', 'description' => 'Watermelon, Lemon - Cold Pressed (500ml)'),
+                array('name' => 'Tropical Blend Fruit Juice', 'price' => '₦4,500', 'description' => 'Watermelon, Pineapple, Orange - Cold Pressed (500ml)'),
+                array('name' => 'Pine-Ginger Blast Fruit Juice', 'price' => '₦4,500', 'description' => 'Pineapple, Ginger - Cold Pressed (500ml)'),
             )
         ),
-        'yogurt_bowls' => array(
-            'title' => 'Yogurt Bowls',
-            'icon' => '🥣',
-            'description' => 'Healthy yogurt bowls topped with fresh fruits and granola',
+        'mocktails' => array(
+            'title' => 'Mocktails',
+            'icon' => '🍹',
+            'description' => 'Refreshing fruit-based mocktails with natural ingredients',
             'items' => array(
-                array('name' => 'Plain Yogurt Bowl', 'price' => '₦2,000', 'description' => 'Greek yogurt with toppings'),
-                array('name' => 'Fruit Yogurt Bowl', 'price' => '₦2,500', 'description' => 'Yogurt with fresh fruits'),
-                array('name' => 'Granola Yogurt Bowl', 'price' => '₦3,000', 'description' => 'Yogurt with granola and honey'),
-                array('name' => 'Acai Bowl', 'price' => '₦4,000', 'description' => 'Acai berry bowl with toppings'),
+                array('name' => 'Mocktail', 'price' => '₦2,500', 'description' => 'Watermelon, Orange, Lemon (500ml)'),
             )
         ),
-        'fresh_fruits' => array(
-            'title' => 'Fresh Cut Fruits',
-            'icon' => '🍓',
-            'description' => 'Freshly cut seasonal fruits ready to enjoy',
+        'fruit_cakes' => array(
+            'title' => 'Fruit Cake',
+            'icon' => '🍰',
+            'description' => 'Healthy fruit cakes - Margarine, Butter and Sugar Free',
             'items' => array(
-                array('name' => 'Watermelon Cup', 'price' => '₦500', 'description' => 'Fresh cut watermelon'),
-                array('name' => 'Pineapple Cup', 'price' => '₦500', 'description' => 'Fresh cut pineapple'),
-                array('name' => 'Pawpaw Cup', 'price' => '₦500', 'description' => 'Fresh cut pawpaw'),
-                array('name' => 'Mixed Fruit Cup', 'price' => '₦1,000', 'description' => 'Assorted fresh fruits'),
+                array('name' => 'Fruit Cake', 'price' => '₦5,000', 'description' => 'Banana, Chocolate, Egg, Peanut butter, Oatmeal, Raisin, Cocoa, Cinnamon, Coconut, Cashew Nut, Honey - Margarine, Butter and Sugar Free'),
             )
         ),
-        'special_drinks' => array(
-            'title' => 'Special Drinks',
-            'icon' => '🍵',
-            'description' => 'Special healthy drinks and beverages',
+        'frappuccinos' => array(
+            'title' => 'Frappuccinos',
+            'icon' => '☕',
+            'description' => 'Creamy blended coffee drinks with premium ingredients',
             'items' => array(
-                array('name' => 'Zobo Drink', 'price' => '₦500', 'description' => 'Traditional hibiscus drink'),
-                array('name' => 'Ginger Shot', 'price' => '₦500', 'description' => 'Concentrated ginger wellness shot'),
-                array('name' => 'Lemon Ginger', 'price' => '₦800', 'description' => 'Lemon and ginger blend'),
-                array('name' => 'Detox Water', 'price' => '₦800', 'description' => 'Infused detox water'),
-                array('name' => 'Green Juice', 'price' => '₦1,500', 'description' => 'Vegetable and fruit blend'),
+                array('name' => 'Frappuccino', 'price' => '₦6,000', 'description' => 'Milk, Caramel, Coffee, Whipped cream (500ml)'),
+                array('name' => 'Chocolate Frappuccino', 'price' => '₦6,500', 'description' => 'Chocolate, Milk, Caramel, Coffee, Whipped cream (500ml)'),
+            )
+        ),
+        'slushies' => array(
+            'title' => 'Slushies',
+            'icon' => '🧊',
+            'description' => 'Refreshing frozen fruit slushies',
+            'items' => array(
+                array('name' => 'Slushie Watermelon', 'price' => '₦2,500', 'description' => 'Watermelon, Lime, Honey (500ml)'),
+                array('name' => 'Slushie Pineapple', 'price' => '₦3,500', 'description' => 'Pineapple, Milk, Honey (500ml)'),
+            )
+        ),
+        'smoothies' => array(
+            'title' => 'Smoothies',
+            'icon' => '🥤',
+            'description' => 'Nutrient-packed smoothies with fresh fruits and natural supplements',
+            'items' => array(
+                array('name' => 'Premium Smoothie', 'price' => '₦6,500', 'description' => 'Yoghurt, Strawberry, Milk, Granola, Honey, Banana, Cashew Nuts, Groundnuts (500ml)'),
+                array('name' => 'Standard Smoothie', 'price' => '₦4,000', 'description' => 'Milk, Watermelon, Honey, Banana, Groundnuts'),
+                array('name' => 'Golden Cream Blend', 'price' => '₦2,500', 'description' => 'Banana, Milk (500ml)'),
             )
         ),
     );
